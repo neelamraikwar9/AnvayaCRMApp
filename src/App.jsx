@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 
 
 import LeadForm from './assets/components/LeadForm';
+import AgentForm from './assets/components/AgentForm';
 
 
 
@@ -12,7 +13,8 @@ function App() {
     <>
       <Routes>
       <Route path="/" element={<LeadForm/>}></Route>
-       
+      <Route path="/agentForm" element={<AgentForm/>}></Route>
+
       </Routes>
     </>
   )

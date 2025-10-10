@@ -192,7 +192,7 @@ const LeadForm = () => {
         </select>
         <br />
 
-        <button type="submit">Submit</button>
+        <button type="submit">Create Lead</button>
       </form>
     </>
   );
