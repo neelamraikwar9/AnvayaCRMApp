@@ -1,0 +1,7 @@
+.button {
+    background-color: rgb(34, 92, 35);
+}
+
+.button:hover{
+    background-color: oklch(37.8% 0.077 168.94);
+}

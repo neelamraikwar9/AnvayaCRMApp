@@ -1,0 +1,51 @@
+
+.outerContainer {
+    border: 1px solid rgb(136, 255, 0);
+    /* background-color: #1A2A80; */
+    /* width: 230%; */
+    /* height: 50rem; */
+    /* padding: 2rem;   */
+}
+
+.text {
+    display: flex; 
+    justify-content: center;
+}
+
+
+.bigContainer {
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.navBarContainer {
+    border: 1px solid red;
+    padding: 1.8rem;
+    /* width: 20rem; */
+}
+
+.mainContentContainer {
+     border: 1px solid red; 
+     padding: 2rem;
+     /* width: 40rem; */
+    
+
+}
+
+.leads {
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.leadBoxes {
+    padding: 2.9rem;
+    border: 0.1px solid rgb(102, 170, 6); 
+    background-color: oklch(37.8% 0.077 168.94);
+    border-radius: 0.5rem;
+}
+
+
+
+

@@ -1,3 +1,4 @@
+import './leadForm.css';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import axiosInstance from "../../axiosInstance";
@@ -50,8 +51,8 @@ const LeadForm = () => {
   });
   //   console.log(leadName, leadSource, priority, timeToClose, tags, "checking forms")
 
-//   console.log(JSON.stringify(formData), "checking form Data");
-//   console.log(formData, "checking form Data");
+  console.log(JSON.stringify(formData), "checking form Data");
+  console.log(formData, "checking form Data");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -76,7 +77,7 @@ const LeadForm = () => {
         console.log("Lead added successfully.", response);
       } catch (error) {
     if (error.response) {
-      // Now you catch the global intercepted error here
+      // Now catch the global intercepted error here
       console.error('Backend error:', error.response.data);
     } else {
       console.error('Network or Axios error:', error.message);
@@ -85,16 +86,11 @@ const LeadForm = () => {
 }
 
   return (
-    <>
-    {/* <div style={{backgroundColor: '#000B58', width: '20rem', height: '20rem'}}>LNF</div>
-    <div style={{backgroundColor: 'oklch(42.4% 0.199 265.638)', width: '20rem', height: '20rem'}}>LNF</div>
-    <div style={{backgroundColor: 'oklch(42.4% 0.199 265.638)', width: '20rem', height: '20rem'}}>LNF
-    <div style={{backgroundColor: 'oklch(84.1% 0.238 128.85)', width: '10rem', height: '10rem'}}></div>
-    </div> */}
-
-
-      <form onSubmit={handleSubmit}>
-        <h2> Add New Lead </h2>
+    <main>
+    <div className="formContainer">
+      <form onSubmit={handleSubmit} className="formStyle">
+        <h1> Add New Lead </h1>
+        <div className="formBox">
         <label htmlFor="nam">Lead Name: </label>
         <input
           type="text"
@@ -103,8 +99,9 @@ const LeadForm = () => {
           value={formData.leadName}
           onChange={handleChange}
         />
-        <br />
-
+        </div>
+        
+        <div className="formBox">
         <label htmlFor="sour">Lead Source: </label>
         <select
           id="sour"
@@ -119,8 +116,9 @@ const LeadForm = () => {
           <option value="Email">Email</option>
           <option value="Other">Other</option>
         </select>
-        <br />
+        </div>
 
+        <div className="formBox">
         <label htmlFor="sales">Sales Agent: </label>
         <select
           id="sales"
@@ -135,8 +133,9 @@ const LeadForm = () => {
             </option>
           ))}
         </select>
-        <br />
+        </div>
 
+        <div className="formBox">
         <label htmlFor="stat">Lead Status: </label>
         <select
           id="stat"
@@ -150,8 +149,9 @@ const LeadForm = () => {
           <option value="Proposal Sent">Proposal Sent</option>
           <option value="Closed">Closed</option>
         </select>
-        <br />
-
+        </div>
+        
+        <div className="formBox">
         <label htmlFor="pri">Priority: </label>
         <select
           id="pri"
@@ -163,8 +163,9 @@ const LeadForm = () => {
           <option value="Medium">Medium</option>
           <option value="Low">Low</option>
         </select>
-        <br />
+        </div>
 
+        <div className='formBox'>
         <label htmlFor="time">Time to Close: </label>
         <input
           type="number"
@@ -174,8 +175,9 @@ const LeadForm = () => {
           placeholder="Number of Days"
           onChange={handleChange}
         />
-        <br />
-
+        </div>
+        
+        <div className="formBox">
         <label htmlFor="tag">Tags: </label>
         <select
           id="tag"
@@ -190,11 +192,15 @@ const LeadForm = () => {
             </option>
           ))}
         </select>
-        <br />
+        </div>
+        <br/>
 
-        <button type="submit">Create Lead</button>
+        <div className="formBox">
+        <button type="submit" className="button">Create Lead</button>
+        </div>
       </form>
-    </>
+      </div>
+    </main>
   );
 };
 

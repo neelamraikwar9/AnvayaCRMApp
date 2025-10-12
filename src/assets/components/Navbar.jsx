@@ -5,19 +5,19 @@ import { NavLink } from "react-router-dom";
 
 function Navbar(){
 
-<style>
-    .nav{{
+   const navStyle = {
        display: 'flex',
        width: '100%',
        height: '3rem', 
-       backgroundColor: 'green'
-    }}
-</style>
+    //    backgroundColor: 'green'
+}
+
     return (
         <>
-            <nav className="nav">
+            <nav style={navStyle}>
                 <ul>
-                    <li><NavLink to="/">Lead Form</NavLink></li>
+                    <li><NavLink to="/">Dashboard</NavLink></li>
+                    <li><NavLink to="/leadForm">Lead Form</NavLink></li>
                     <li><NavLink to="/agentForm">Agent Form</NavLink></li>
                     {/* <li><NavLink></NavLink></li>
                     <li><NavLink></NavLink></li>

@@ -1,0 +1,36 @@
+.formStyle {
+    border: 1px solid rgb(72, 224, 95);
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+
+}
+
+.formBox {
+    /* border: 1px solid rgb(244, 240, 240);  */
+    padding: 0.3rem;
+
+}
+
+label {
+    font-size: 20px;
+}
+
+input {
+    font-size: 20px;
+    margin-left: 1rem;
+}
+
+select {
+    font-size: 20px;
+    margin-left: 1rem;
+
+}
+
+.creatLead {
+    font-size: 20px;
+}
+
+/* .button {
+    background-color: rgb(31, 84, 32);
+} */
