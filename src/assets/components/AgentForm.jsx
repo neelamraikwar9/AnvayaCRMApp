@@ -24,18 +24,26 @@ const AgentForm = () => {
     }
 
     return(
-        <>
-        <h1>Add New Sales Agent</h1>
-        <form onSubmit={handleSubmit}>
+        <main>
+        <div className="formContainer">
+        <form onSubmit={handleSubmit} className="formStyle">
+        <h1 className="text">Add New Sales Agent</h1>
+        <div className="formBox">
         <label htmlFor="nam">Agent Name: </label>
         <input type="text" id="nam" name="name" onChange={handleChange}/>
-        <br/>
+        </div>
+        
+        <div className="formBox">
         <label htmlFor="em">Email Address:</label>
         <input type="email" id="em" name="email" onChange={handleChange}/>
+        </div>
 
-        <button type="submit">Create Agent</button>
+        <div className="formButton">
+        <button type="submit" className="button">Create Agent</button>
+        </div>
         </form>
-        </>
+        </div>
+        </main>
     )
 }
 

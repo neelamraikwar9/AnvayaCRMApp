@@ -1,15 +1,12 @@
 
 .outerContainer {
     border: 1px solid rgb(136, 255, 0);
-    /* background-color: #1A2A80; */
-    /* width: 230%; */
+    /* background-color: */
+    width: 100%;
+    margin: 1rem; 
+
     /* height: 50rem; */
     /* padding: 2rem;   */
-}
-
-.text {
-    display: flex; 
-    justify-content: center;
 }
 
 
@@ -22,13 +19,14 @@
 
 .navBarContainer {
     border: 1px solid red;
-    padding: 1.8rem;
+    padding: 1rem 6rem;
+    /* background-color: oklch(44.8% 0.119 151.328) */
     /* width: 20rem; */
 }
 
 .mainContentContainer {
      border: 1px solid red; 
-     padding: 2rem;
+     padding: 0rem 10rem;
      /* width: 40rem; */
     
 

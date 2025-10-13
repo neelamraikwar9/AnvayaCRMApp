@@ -69,10 +69,10 @@ function Dashboard() {
           </div>
 
           <div className="mainContentContainer">
-            <h2>Main Content</h2>
+            <h2>Leads</h2>
 
             <div className="leads">
-              {lead?.map((led) => (
+              {lead.slice(0, 4)?.map((led) => (
                 <div key={led._id}>
                   <div className="leadBoxes">
                     {/* {console.log(led.name, "checking lead naem ;")} */}

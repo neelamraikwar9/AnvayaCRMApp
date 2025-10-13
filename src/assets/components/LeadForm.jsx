@@ -65,11 +65,13 @@ const LeadForm = () => {
 
     async function handleSubmit(event) {
       event.preventDefault();
-
+      console.log(formData,'fjowiejherek',  JSON.stringify(formData))
+      const data = JSON.stringify(formData);
       try {
-        const response = await axiosInstance.post(
+        const response = await axios.post(
           "https://anvaya-model-references-apis-backen.vercel.app/leads",
-          formData
+          data,
+          {headers:{  authorization: '', "Content-Type" : "application/json"}}
         );
         // console.log(response, "checking response")
         console.log('Lead added successfully', response);
@@ -79,6 +81,7 @@ const LeadForm = () => {
     if (error.response) {
       // Now catch the global intercepted error here
       console.error('Backend error:', error.response.data);
+      console.error('Baddsdwdw:', error);
     } else {
       console.error('Network or Axios error:', error.message);
     }
@@ -89,7 +92,7 @@ const LeadForm = () => {
     <main>
     <div className="formContainer">
       <form onSubmit={handleSubmit} className="formStyle">
-        <h1> Add New Lead </h1>
+        <h1 class="text"> Add New Lead </h1>
         <div className="formBox">
         <label htmlFor="nam">Lead Name: </label>
         <input
@@ -195,7 +198,7 @@ const LeadForm = () => {
         </div>
         <br/>
 
-        <div className="formBox">
+        <div className="formButton">
         <button type="submit" className="button">Create Lead</button>
         </div>
       </form>
