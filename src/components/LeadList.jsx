@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const LeadList = () => {
@@ -23,26 +24,31 @@ const LeadList = () => {
   }, []);
 
     return(
-        <main>
-        <h1>Lead List</h1>
-        <div className='container'>
-            <div>
+        <main className="leadContainer">
+        <h1  className="text">Lead List</h1>
+        <div className="container">
+            <div className="backButn">
+             <Link to="/">
                 <button>Back to Dashboard</button>
+            </Link>
             </div>
             
-            <div>
+            <div className="midContainer">
                 <h2>Lead Overview</h2>
                 <section>
-                    {leads.slice(0, 7)?.map((lead) => (
+                    {leads.slice(0, 4)?.map((lead, index) => (
                          <div key={lead._id}>
-                         <p><strong>Lead 1 - </strong>{lead.status} - {lead.name}</p>
-                         <p><strong>Lead 2 - </strong>{lead.status} - {lead.name}</p>
-                         <p><strong>Lead 3 - </strong>{lead.status} - {lead.name}</p>
-                         <p><strong>Lead 4 - </strong>{lead.status} - {lead.name}</p>
-                         <p><strong>Lead 5 - </strong>{lead.status} - {lead.name}</p>
-                         <p><strong>Lead 6 - </strong>{lead.status} - {lead.name}</p>
+                         <p><strong>Lead {index + 1} - </strong>{lead.status} - {lead.name}</p>
                          </div>
                     ))}
+                </section>
+                <br/>
+                <section>
+                    <p>FiltersL: [Status] [Sales Agent]</p>
+                    <p>Sort by: [Priority] [Time to Close]</p>
+                    <Link to="/leadForm">
+                    <button className="button">Add New Lead</button>
+                    </Link>
                 </section>
             </div>
         </div>

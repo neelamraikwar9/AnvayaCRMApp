@@ -47,3 +47,28 @@ input {
 .button:hover{
     background-color: oklch(37.8% 0.077 168.94);
 }
+
+.leadContainer {
+    border: 1px solid rgb(126, 16, 228);
+    width: 100rem;
+    margin: 2rem;
+}
+
+.container {
+    border: 1px solid blueviolet;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.backButn {
+    border: 1px solid blueviolet;
+    padding:  1rem 4rem; 
+}
+
+.midContainer {
+    border: 1px solid rgb(167, 140, 192);
+    padding: 0rem 5rem; 
+    width: 70rem;
+}
+

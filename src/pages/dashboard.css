@@ -2,8 +2,9 @@
 .outerContainer {
     border: 1px solid rgb(136, 255, 0);
     /* background-color: */
-    width: 100%;
-    margin: 1rem; 
+    /* width: 100%; */
+    margin: 1rem;
+    margin-left: 3rem;  
 
     /* height: 50rem; */
     /* padding: 2rem;   */
@@ -19,7 +20,7 @@
 
 .navBarContainer {
     border: 1px solid red;
-    padding: 1rem 6rem;
+    padding: 1rem 4rem;
     /* background-color: oklch(44.8% 0.119 151.328) */
     /* width: 20rem; */
 }
@@ -34,7 +35,13 @@
 
 .leads {
     display: flex; 
+    /* width: 62rem; */
+    justify-content: space-between;
     flex-wrap: wrap;
+    /* border: 0.1px solid rgb(102, 170, 6);  */
+    
+
+    
 }
 
 .leadBoxes {
@@ -42,8 +49,28 @@
     border: 0.1px solid rgb(102, 170, 6); 
     background-color: oklch(37.8% 0.077 168.94);
     border-radius: 0.5rem;
+    margin: 0rem 0.3rem;
 }
 
+.filteredStatusBox {
+    border: 1px solid rgb(5, 190, 116);
+    border-radius: 0.3rem;
+    background-color:   rgb(48, 100, 79);
+    padding: 1rem;
+    width: 20rem;
+
+}
+
+.statusFilteredList {
+    list-style: none;
+}
+
+.filBtnStyl {
+    margin: 1rem; 
+    padding: 1rem;
+    color:aqua;
+    border: 1px solid rgb(5, 190, 116);
+}
 
 
 

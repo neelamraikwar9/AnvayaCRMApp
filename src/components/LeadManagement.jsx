@@ -1,6 +1,6 @@
 import "./leadManagement.css";
 import axios from "axios";
-import { Link } from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function LeadManagement() {
@@ -32,7 +32,7 @@ function LeadManagement() {
           </Link>
         </div>
 
-        <div className="detailContainer">
+        <div className="midContainer">
           <h2>Lead Details</h2>
           <p>Lead Name: </p>
           <p>Sales Agent: </p>

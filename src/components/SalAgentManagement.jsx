@@ -1,0 +1,55 @@
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+const SalesAgentManagement = () => {
+  const [salesAgent, setSalesAgent] = useState([]);
+
+  const agentsApi =
+    "https://anvaya-model-references-apis-backen.vercel.app/salesAgent";
+
+  async function getAgentApi() {
+    try {
+      const res = await axios.get(agentsApi);
+      console.log(res.data);
+      setSalesAgent(res.data);
+    } catch (error) {
+      console.error("Error message: ", error.message);
+    }
+  }
+
+  //we are running this useEffect for one time only.
+  useEffect(() => {
+    getAgentApi();
+  }, []);
+
+  return (
+    <main className="leadContainer">
+      <h1 className="text">Sales Agent Management</h1>
+      <div className="container">
+        <div className="backButn">
+          <Link to="/">
+            <button>Back to Dashboard</button>
+          </Link>
+        </div>
+
+        <div className="midContainer">
+          <h2>Sales Agent List</h2>
+          <div style={{border: '1px solid red'}} className="salesAgentList">
+            {salesAgent?.map((agent, index) => (
+              <p key={agent._id}>
+                Agent {index + 1} : {""} <strong>{agent.name}</strong> -{" "}
+                {agent.email}
+              </p>
+            ))}
+          </div>
+
+          <br />
+          <button className="button">Add New Agent</button>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default SalesAgentManagement;
