@@ -21,7 +21,7 @@ function Dashboard() {
   const AllLeadApi =
     "https://anvaya-model-references-apis-backen.vercel.app/leads";
 
-  async function getAllLeadApi() {
+  async function fetchAllLeadApi() {
     try {
       const res = await axios.get(AllLeadApi);
       console.log(res.data);
@@ -32,7 +32,7 @@ function Dashboard() {
   }
 
   useEffect(() => {
-    getAllLeadApi();
+    fetchAllLeadApi();
   }, []);
 
   //Api's  status vise;

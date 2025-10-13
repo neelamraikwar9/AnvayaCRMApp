@@ -5,26 +5,45 @@ import { useState, useEffect } from "react";
 
 function LeadManagement() {
   const [comment, setComment] = useState([]);
-  const commentApi =
-    "https://anvaya-model-references-apis-backen.vercel.app/comments";
+  const [lead, setLead] = useState([]);
 
-  async function getComments() {
+  
+  useEffect(() => {
+    async function fetchComments() {
     try {
-      const res = await axios.get(commentApi);
+      const res = await axios.get("https://anvaya-model-references-apis-backen.vercel.app/comments");
       console.log(res.data);
       setComment(res.data);
     } catch (error) {
       throw error;
     }
   }
-
-  useEffect(() => {
-    getComments();
+    fetchComments();
   }, []);
+
+
+  
+  useEffect(() => {
+    async function fetchLeads() {
+    try {
+      console.log("Fetching lead...");
+      const res = await axios.get("https://anvaya-model-references-apis-backen.vercel.app/leads");
+      console.log("Lead is fetched:", res.data);
+      setLead(res.data);
+    } catch (error) {
+      console.error("Error in fetching lead: ", error);
+      setLead([]);
+    }
+  }
+    fetchLeads();
+  }, []);
+
+
+
 
   return (
     <main className="leadContainer">
-      <h1 className="text">Lead Management: [Lead Name]</h1>
+      <h1 className="text">Lead Management: {lead.slice(0, 1)?.map((led) => (led.name))}</h1>
       <div className="container">
         <div className="backButn">
           <Link to="/">
@@ -34,14 +53,22 @@ function LeadManagement() {
 
         <div className="midContainer">
           <h2>Lead Details</h2>
-          <p>Lead Name: </p>
-          <p>Sales Agent: </p>
-          <p>Lead Source: </p>
-          <p>Lead Status: </p>
-          <p>Priority: </p>
-          <p>Time to Close: </p>
+          {lead.slice(0, 1)?.map((led) => (
+          <div key={led._id}>
+          <p><strong>Lead Name:</strong>&nbsp; {led.name}</p>
+          <p><strong>Sales Agent:</strong> &nbsp;{led.salesAgent.name}</p>
+          <p><strong>Lead Source:</strong> &nbsp;{led.source}</p>
+          <p><strong>Lead Status:</strong> &nbsp;{led.status}</p>
+          <p><strong>Priority:</strong> &nbsp;{led.priority}</p>
+          <p><strong>Time to Close:</strong> &nbsp;{led.timeToClose} Days</p>
+          </div>
+          ))}
           <br />
+        
           <button>Edit Lead Details</button>
+          <br />
+          <br />
+
           <h2>Comment Section</h2>
           <div className="commContainer">
             {comment?.map((comm) => (
@@ -69,7 +96,7 @@ function LeadManagement() {
           <br />
           <br />
 
-          <button className="button">Submit Comment</button>
+          <button className="button" onClick= {() => handleSubmitComment()}>Submit Comment</button>
         </div>
       </div>
     </main>
