@@ -150,7 +150,7 @@ const LeadForm = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-             placeholder="Enter lead name"
+          placeholder="Enter lead name"
         />
         </div>
         

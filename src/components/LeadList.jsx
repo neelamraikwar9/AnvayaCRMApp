@@ -44,6 +44,7 @@ const LeadList = () => {
                 </section>
                 <br/>
                 <section>
+                <h2>Filter by Sales Agent</h2>
                     <p>FiltersL: [Status] [Sales Agent]</p>
                     <p>Sort by: [Priority] [Time to Close]</p>
                     <Link to="/leadForm">
