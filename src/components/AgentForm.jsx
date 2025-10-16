@@ -16,10 +16,19 @@ const AgentForm = () => {
         e.preventDefault();
 
         try{
-        const res = await axios.post("https://anvaya-model-references-apis-backen.vercel.app/salesAgent", form)
-        console.log(res, "checking res.")
+        const res = await axios.post("https://anvaya-model-references-apis-backen.vercel.app/salesAgent", 
+            JSON.stringify(form),
+        {headers: {"Content-Type": "application/json"}});
+
+        console.log('Sales Agent added successfully', res.data);
+       
+        alert("✅ Sales Agent added successfully!");
+
+        window.location.reload();
+
+
         } catch(error){
-            console.log(error)
+            console.log("Error submitting lead:", error)
         }
     }
 

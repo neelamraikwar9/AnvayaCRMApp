@@ -90,6 +90,8 @@ function LeadManagement() {
         { headers: { "Content-Type": "application/json" } }
       );
 
+      // setCommentData([]);
+
       console.log("Comment added successfully", res.data);
       alert("✅ Comment added successfully!");
     } catch (error) {

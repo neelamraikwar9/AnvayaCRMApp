@@ -12,6 +12,7 @@ import Report from './pages/Reports';
 import Form from './components/Form';
 import LeadStatusView from './components/LeadStatusView';
 import SalesAgentView from './components/SalesAgentView';
+// import { apiProvider } from './UseApiContext';
 
 
 
@@ -19,6 +20,7 @@ function App() {
   
   return (
     <>
+    {/* <apiProvider> */}
       <Routes>
       <Route path="/" element={<Dashboard/>}></Route>
       <Route path="/leadForm" element={<LeadForm/>}></Route>
@@ -30,12 +32,8 @@ function App() {
       <Route path="/form" element={<Form/>}></Route>
       <Route path="/leadStatusView" element={<LeadStatusView/>}></Route>
       <Route path="/salesAgentView" element={<SalesAgentView/>}></Route>
-
-
-
-
-
       </Routes>
+      {/* </apiProvider> */}
     </>
   )
 }
