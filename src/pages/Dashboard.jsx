@@ -64,9 +64,7 @@ function Dashboard() {
       // const contLeads = await axios.get(contStatus);
       // console.log(contLeads.data, "checking contacted");
       // setContactedLeads(contactedLeads.data);
-    } 
-    
-    catch (error) {
+    } catch (error) {
       console.log("Error message: ", error.message);
     }
   }
@@ -138,7 +136,6 @@ function Dashboard() {
             <p>Proposal Sent: {proposalLead.length}</p>
             {/* <p>Contacted: {contactedLeads?.length}</p> */}
 
-           
             <h2>Filtered by Status</h2>
             {loading && <div>Loading...</div>}
             {error && <div>{error}</div>}
@@ -158,28 +155,24 @@ function Dashboard() {
               <button
                 onClick={() => fetchDataByStatus("New")}
                 className="filBtnStyl"
-    
               >
                 New
               </button>
               <button
                 onClick={() => fetchDataByStatus("Proposal_Sent")}
                 className="filBtnStyl"
-               
               >
                 Proposal Sent
               </button>
               <button
                 onClick={() => fetchDataByStatus("Qualified")}
                 className="filBtnStyl"
-               
               >
                 Qualified
               </button>
               <button
                 onClick={() => fetchDataByStatus("Contacted")}
                 className="filBtnStyl"
-                
               >
                 Contacted
               </button>

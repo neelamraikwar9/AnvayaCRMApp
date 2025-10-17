@@ -84,7 +84,7 @@ const LeadList = () => {
 
       console.log(lowToHigh, "lowToHigh");
     } else if (sortByPriority === "High to Low") {
-      console.log("inside else if")
+      console.log("inside else if");
       const highToLow = sortLeads.sort((a, b) => {
         return (
           priorityOrder[b.priority.toLowerCase()] -
@@ -113,11 +113,19 @@ const LeadList = () => {
         <div className="midContainer">
           <h2>Lead Overview</h2>
           <section>
-            {leads.slice(0, 5)?.map((lead, index) => (
+            {/* {leads.slice(0, 5)?.map((lead, index) => ( */}
+            {leads?.map((lead, index) => (
               <div key={lead._id}>
                 <p>
                   <strong>Lead {index + 1} - </strong>
-                  {lead.status} - {lead.salesAgent?.name}
+                  Lead Status: &nbsp;
+                  <strong>
+                    <i>{lead.status}</i>
+                  </strong>{" "}
+                  &nbsp;&nbsp;&nbsp; Sales Agend:{" "}
+                  <strong>
+                    <i>{lead.salesAgent?.name}</i>
+                  </strong>
                 </p>
               </div>
             ))}
@@ -130,7 +138,14 @@ const LeadList = () => {
               <div key={agent._id}>
                 <p>
                   {" "}
-                  &nbsp;{agent.name} - {agent.status}
+                  Lead Name: &nbsp;
+                  <strong>
+                    <i>{agent.name}</i>
+                  </strong>{" "}
+                  - Lead Status:&nbsp;
+                  <strong>
+                    <i>{agent.status}</i>
+                  </strong>
                 </p>
               </div>
             ))}
@@ -139,9 +154,27 @@ const LeadList = () => {
 
           <section>
             <h2>Sorted By Priority-</h2>
-            {sortedLeads?.slice(0, 6).map((lead) => (
+            {/* {sortedLeads?.slice(0, 6).map((lead) => ( */}
+            {sortedLeads?.map((lead) => (
               <div key={lead._id}>
-                <p>{lead.name} -  {lead.priority} - {lead.status} - {lead.source}</p>
+                <p>
+                  Lead Name: &nbsp;
+                  <strong>
+                    <i>{lead.name}</i>
+                  </strong>
+                  &nbsp;&nbsp; Priority: &nbsp;
+                  <strong>
+                    <i>{lead.priority}</i>
+                  </strong>
+                  &nbsp;&nbsp; Lead Status: &nbsp;
+                  <strong>
+                    <i> &nbsp;&nbsp;{lead.status}</i>
+                  </strong>
+                  &nbsp;&nbsp; Lead Source: &nbsp;
+                  <strong>
+                    <i>{lead.source}</i>
+                  </strong>
+                </p>
               </div>
             ))}
           </section>

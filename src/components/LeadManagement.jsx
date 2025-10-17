@@ -35,9 +35,8 @@ function LeadManagement() {
         );
         console.log(res.data, "responseData");
         setComment(res.data);
-        console.log(comment, 'comments')
+        console.log(comment, "comments");
 
-       
         // setCommentData(res.data);
       } catch (error) {
         throw error;
@@ -124,20 +123,18 @@ function LeadManagement() {
     setEdit(updatedEdit);
   }
 
-
   async function handleEdit(leadID, edit, index) {
     try {
       const res = await axios.post(
-        `https://anvaya-model-references-apis-backen.vercel.app/leads/${leadID}`, 
-        edit[index]   //sending specific object
+        `https://anvaya-model-references-apis-backen.vercel.app/leads/${leadID}`,
+        edit[index] //sending specific object
       );
       setShowFormModel(false);
       console.log(res, "checking res.");
 
-      console.log('Lead details edited successfully', res.data);
-       
-      alert("✅ Lead details edited successfully!");
+      console.log("Lead details edited successfully", res.data);
 
+      alert("✅ Lead details edited successfully!");
     } catch (error) {
       console.log(error, "error");
     }
@@ -188,105 +185,106 @@ function LeadManagement() {
             </button>
             {/* model for editing. */}
 
-            <br/>
-            <br/>
-            <br/>
-
-
+            <br />
+            <br />
+            <br />
 
             {showFormModel &&
               edit.slice(0, 1).map((item, index) => (
                 <div key={item._id}>
-                <form 
-                  onSubmit={(e) => {
-                    e.preventDefault();
-        
-                    handleEdit(item._id, edit, index);
-                  }}
-                >
-                  <label>Lead Name: </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={item.name || ""}
-                    onChange={(e) => onInputChange(e, index)}
-                  />
-                  <br />
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
 
-                  <label>Sales Agent:</label>
-                  <select
-                    name="salesAgent"
-                    value={item.salesAgent || ""}
-                    onChange={(e) => onInputChange(e, index)}
+                      handleEdit(item._id, edit, index);
+                    }}
                   >
-                    {salesAgents.map((agent) => (
-                      <option key={agent._id} value={agent._id}>
-                        {agent.name} ({agent.email})
-                      </option>
-                    ))}
-                  </select>
+                    <label>Lead Name: </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={item.name || ""}
+                      onChange={(e) => onInputChange(e, index)}
+                    />
+                    <br />
 
-                  <br />
+                    <label>Sales Agent:</label>
+                    <select
+                      name="salesAgent"
+                      value={item.salesAgent || ""}
+                      onChange={(e) => onInputChange(e, index)}
+                    >
+                      {salesAgents.map((agent) => (
+                        <option key={agent._id} value={agent._id}>
+                          {agent.name} ({agent.email})
+                        </option>
+                      ))}
+                    </select>
 
-                  <label>Lead Source: </label>
-                  <select
-                    name="source"
-                    value={item.source || ""}
-                    onChange={(e) => onInputChange(e, index)}
-                  >
-                    <option value="">Select Source</option>
-                    <option value="Website">Website</option>
-                    <option value="Referral">Referral</option>
-                    <option value="Cold Call">Cold Call</option>
-                    <option value="Advertisement">Advertisement</option>
-                    <option value="Email">Email</option>
-                    <option value="Other">Other</option>
-                  </select>
-                  <br />
+                    <br />
 
-                  <label>Lead Status: </label>
-                  <select
-                    name="status"
-                    value={item.status || ""}
-                    onChange={(e) => onInputChange(e, index)}
-                  >
-                    <option value="New">New</option>
-                    <option value="Contacted">Contacted</option>
-                    <option value="Qualified">Qualified</option>
-                    <option value="Proposal Sent">Proposal Sent</option>
-                    <option value="Closed">Closed</option>
-                  </select>
-                  <br />
+                    <label>Lead Source: </label>
+                    <select
+                      name="source"
+                      value={item.source || ""}
+                      onChange={(e) => onInputChange(e, index)}
+                    >
+                      <option value="">Select Source</option>
+                      <option value="Website">Website</option>
+                      <option value="Referral">Referral</option>
+                      <option value="Cold Call">Cold Call</option>
+                      <option value="Advertisement">Advertisement</option>
+                      <option value="Email">Email</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <br />
 
-                  <label>Priority: </label>
-                  <select
-                    name="priority"
-                    value={item.priority || ""}
-                    onChange={(e) => onInputChange(e, index)}
-                  >
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                  </select>
-                  <br />
+                    <label>Lead Status: </label>
+                    <select
+                      name="status"
+                      value={item.status || ""}
+                      onChange={(e) => onInputChange(e, index)}
+                    >
+                      <option value="New">New</option>
+                      <option value="Contacted">Contacted</option>
+                      <option value="Qualified">Qualified</option>
+                      <option value="Proposal Sent">Proposal Sent</option>
+                      <option value="Closed">Closed</option>
+                    </select>
+                    <br />
 
-                  <label>Time to close: </label>
-                  <input
-                    type="number"
-                    name="timeToClose"
-                    value={item.timeToClose || ""}
-                    onChange={(e) => onInputChange(e, index)}
-                  />
-                  <br />
-                  
-                  <div style={{display: 'flex', gap: '1rem' }}>
-                  <button type="submit">Save</button>
+                    <label>Priority: </label>
+                    <select
+                      name="priority"
+                      value={item.priority || ""}
+                      onChange={(e) => onInputChange(e, index)}
+                    >
+                      <option value="High">High</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Low">Low</option>
+                    </select>
+                    <br />
 
-                  <button type="button" onClick={() => setShowFormModel(false)}>
-                    Cancel
-                  </button>
-                  </div>
-                </form>
+                    <label>Time to close: </label>
+                    <input
+                      type="number"
+                      name="timeToClose"
+                      value={item.timeToClose || ""}
+                      onChange={(e) => onInputChange(e, index)}
+                    />
+                    <br />
+
+                    <div style={{ display: "flex", gap: "1rem" }}>
+                      <button type="submit">Save</button>
+
+                      <button
+                        type="button"
+                        onClick={() => setShowFormModel(false)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
                 </div>
               ))}
           </div>
@@ -298,7 +296,7 @@ function LeadManagement() {
             {comment?.map((comm) => (
               <div key={comm._id} className="commBox">
                 <p>
-                    <strong>{comm.author?.name}</strong> - {comm.createdAt}
+                  <strong>{comm.author?.name}</strong> - {comm.createdAt}
                 </p>
                 <p>Comment: {comm.commentText}</p>
               </div>

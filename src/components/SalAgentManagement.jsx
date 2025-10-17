@@ -35,7 +35,14 @@ const SalesAgentManagement = () => {
 
         <div className="midContainer">
           <h2>Sales Agent List</h2>
-          <div style={{border: '1px solid purple', borderRadius: '0.3rem', padding: '0rem 0.5rem'}} className="salesAgentList">
+          <div
+            style={{
+              border: "1px solid purple",
+              borderRadius: "0.3rem",
+              padding: "0rem 0.5rem",
+            }}
+            className="salesAgentList"
+          >
             {salesAgent?.map((agent, index) => (
               <p key={agent._id}>
                 Agent {index + 1} : {""} <strong>{agent.name}</strong> -{" "}
@@ -46,7 +53,7 @@ const SalesAgentManagement = () => {
 
           <br />
           <Link to="/agentForm">
-          <button className="button">Add New Agent</button>
+            <button className="button">Add New Agent</button>
           </Link>
         </div>
       </div>
