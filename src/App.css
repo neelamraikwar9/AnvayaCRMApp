@@ -61,12 +61,49 @@ input {
 }
 
 .backButn {
-    border: 1px solid blueviolet;
-    padding: 1rem 4rem;
+    /* border: 1px solid blueviolet; */
+    /* padding: 1rem 4rem; */
+    /* height: 0rem; */
+    display: flex;
+    justify-content: center;
+    width: 18rem;
+
 }
+
+/* .btnback:hover{ */
+    /* border :1px solid aquamarine; */
+    /* background-color: aquamarine; */
+    
+    /* background-color: #7c3aed;  */
+  /* border-color: #3cc09b;       */
+  /* color: #fff;                 */
+/* } */
 
 .midContainer {
     border: 1px solid rgb(167, 140, 192);
     padding: 0rem 5rem;
     width: 70rem;
+}
+
+.listBox {
+    border: 1px solid rgb(5, 190, 116);
+    border-radius: 0.3rem;
+    background-color: rgb(48, 100, 79);
+    padding: 1rem;
+    width: 40rem;
+}
+
+.filBtnStyl {
+    margin: 1rem;
+    padding: 1rem;
+    color: aqua;
+    border: 1px solid rgb(5, 190, 116);
+}
+
+.styleList {
+    list-style: none;
+}
+
+.navLinkStyl {
+    color: white;
 }

@@ -1,12 +1,7 @@
 .outerContainer {
-    border: 1px solid rgb(136, 255, 0);
-    /* background-color: */
-    /* width: 100%; */
-    margin: 1rem;
-    margin-left: 3rem;
-
-    /* height: 50rem; */
-    /* padding: 2rem;   */
+    border: 1px solid rgb(136, 255, 0); 
+    background-color: rgb(44, 48, 38);
+    width: 100%;
 }
 
 
@@ -18,14 +13,18 @@
 }
 
 .navBarContainer {
-    border: 1px solid red;
+    border: 1px solid rgb(30, 189, 78);
     padding: 1rem 4rem;
-    /* background-color: oklch(44.8% 0.119 151.328) */
+    margin: 4.6rem 2.5rem;
+    height: 21rem;
+    border-radius: 1rem;
+
+    background-color: oklch(35.515% 0.09287 152.294)
     /* width: 20rem; */
 }
 
 .mainContentContainer {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     padding: 0rem 10rem;
     /* width: 40rem; */
 
@@ -34,8 +33,11 @@
 
 .leads {
     display: flex;
-    /* width: 62rem; */
-    justify-content: space-between;
+    /* width: 63.5rem; */
+    /* width: 103.5rem;  */
+
+    /* justify-content: space-between; */
+    gap: 1rem;
     flex-wrap: wrap;
     /* border: 0.1px solid rgb(102, 170, 6);  */
 
@@ -51,22 +53,22 @@
     margin: 0rem 0.3rem;
 }
 
-.filteredStatusBox {
+/* .listBox {
     border: 1px solid rgb(5, 190, 116);
     border-radius: 0.3rem;
     background-color: rgb(48, 100, 79);
     padding: 1rem;
     width: 20rem;
 
-}
+} */
 
-.statusFilteredList {
+/* .styleList {
     list-style: none;
-}
+} */
 
-.filBtnStyl {
+/* .filBtnStyl {
     margin: 1rem;
     padding: 1rem;
     color: aqua;
     border: 1px solid rgb(5, 190, 116);
-}
+} */

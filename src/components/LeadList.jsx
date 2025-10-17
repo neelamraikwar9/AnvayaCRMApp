@@ -106,16 +106,16 @@ const LeadList = () => {
       <div className="container">
         <div className="backButn">
           <Link to="/">
-            <button>Back to Dashboard</button>
+            <button className="btnback">Back to Dashboard</button>
           </Link>
         </div>
 
         <div className="midContainer">
           <h2>Lead Overview</h2>
-          <section>
+          <section className="">
             {/* {leads.slice(0, 5)?.map((lead, index) => ( */}
             {leads?.map((lead, index) => (
-              <div key={lead._id}>
+              <div key={lead._id} style={{border: '1px'}}>
                 <p>
                   <strong>Lead {index + 1} - </strong>
                   Lead Status: &nbsp;
@@ -131,8 +131,9 @@ const LeadList = () => {
             ))}
           </section>
           <br />
+          
 
-          <section>
+          <section className="listBox" style={{width: '30rem'}}>
             <h2>Filtered Leads by Sales Agents:</h2>
             {leadsByAgents?.map((agent) => (
               <div key={agent._id}>
@@ -152,7 +153,7 @@ const LeadList = () => {
           </section>
           <br />
 
-          <section>
+          <section className="listBox" style={{width: '55rem'}}>
             <h2>Sorted By Priority-</h2>
             {/* {sortedLeads?.slice(0, 6).map((lead) => ( */}
             {sortedLeads?.map((lead) => (
@@ -178,6 +179,8 @@ const LeadList = () => {
               </div>
             ))}
           </section>
+          <br />
+
 
           <section>
             <h2>Filter Leads by Sales Agent</h2>
@@ -186,8 +189,10 @@ const LeadList = () => {
                 <button
                   key={agent._id}
                   onClick={() => handleFilterBySalesAgent(agent._id)}
+                  className="filBtnStyl"
                 >
                   {agent.name}
+                  
                 </button>
               ))}
             </div>
@@ -204,6 +209,7 @@ const LeadList = () => {
                 value="Low to hight"
                 checked={sortByPriority === "Low to hight"}
                 onChange={handleSortByPriority}
+                style={{accentColor: 'green'}}
               />
               Priority- Low to hight
             </label>
@@ -216,6 +222,7 @@ const LeadList = () => {
                 value="High to Low"
                 checked={sortByPriority === "High to Low"}
                 onChange={handleSortByPriority}
+                style={{accentColor: 'green'}}
               />
               Priority- High to Low
             </label>

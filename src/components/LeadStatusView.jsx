@@ -99,9 +99,9 @@ const LeadStatusView = () => {
           <h2>Lead List by Status</h2>
           <section>
             <h3>Status: Qualified</h3>
-            <div style={{ border: "1px solid red" }}>
+            <div style={{}} className="listBox">
               {proposal?.map((prop, index) => (
-                <div key={prop._id} style={{ border: "1px" }}>
+                <div key={prop._id} style={{ border: "1px" }} >
                   <p>
                     <strong>Lead {index + 1}</strong> &nbsp; - &nbsp;
                     <strong>Lead Name: </strong>&nbsp;{prop.name}&nbsp; &nbsp;
@@ -116,25 +116,28 @@ const LeadStatusView = () => {
           <br />
           <section>
             <h2>Leads Filtered by Priority</h2>
+            <div className="listBox" style={{width: '25rem', }}>
             {filteredLeads?.map((lead) => (
-              <div key={lead._id}>
+              <div key={lead._id} >
                 <p>
                   Lead Name: <strong>{lead.name}</strong> - Priority :{" "}
                   <strong>{lead.priority}</strong>
                 </p>
               </div>
             ))}
+            </div>
           </section>
           
           <section>
           <h2>Sorted by Time to Close</h2>
-          
+          <div className="listBox" style={{width: '30rem', }}>
           {sorted?.map((lead) => (
             <div key={lead._id}>
                 <p>Lead Name: <strong>{lead.name}</strong> - Time to Close: <strong>{lead.timeToClose}</strong>
 </p>
             </div>
           ))}
+          </div>
           </section>
           
 
@@ -149,6 +152,7 @@ const LeadStatusView = () => {
                   name="priority"
                   value="High"
                   onChange={(e) => handleInputChange(e.target.value)}
+                  style={{accentColor: 'green'}}
                 />
                 High
               </label>
@@ -159,6 +163,7 @@ const LeadStatusView = () => {
                   name="priority"
                   value="Medium"
                   onChange={(e) => handleInputChange(e.target.value)}
+                  style={{accentColor: 'green'}}
                 />
                 Medium
               </label>
@@ -169,6 +174,7 @@ const LeadStatusView = () => {
                   name="priority"
                   value="Low"
                   onChange={(e) => handleInputChange(e.target.value)}
+                  style={{accentColor: 'green'}}
                 />
                 Low
               </label>
@@ -185,6 +191,7 @@ const LeadStatusView = () => {
                 value="Low to high"
                 checked={sort === "Low to high"}
                 onChange={handleSortChange}
+                style={{accentColor: 'green'}}
               />
               Time to Close- Low to high
             </label>
@@ -197,6 +204,7 @@ const LeadStatusView = () => {
                 value="High to low"
                 checked={sort === "High to low"}
                 onChange={handleSortChange}
+                style={{accentColor: 'green'}}
               />
               Time to Close- High to low
             </label>

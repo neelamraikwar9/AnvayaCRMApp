@@ -146,7 +146,7 @@ function LeadManagement() {
         Lead Management: {lead.slice(0, 1)?.map((led) => led.name)}
       </h1>
       <div className="container">
-        <div className="backButn">
+        <div className="backButn" >
           <Link to="/">
             <button>Back to Dashboard</button>
           </Link>

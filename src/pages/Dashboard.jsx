@@ -9,15 +9,10 @@ function Dashboard() {
   const [newLead, setNewLead] = useState([]);
   const [proposalLead, setProposalLead] = useState([]);
   const [qualifiedLead, setQualifiedLead] = useState([]);
-  // const [contactedLeads, setContactedLeads] = useState([]);
-
-  //useState for filtering;
-
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
 
-  // console.log(lead, "checking load.")
   const AllLeadApi =
     "https://anvaya-model-references-apis-backen.vercel.app/leads";
 
@@ -35,7 +30,7 @@ function Dashboard() {
     fetchAllLeadApi();
   }, []);
 
-  //Api's  status vise;
+
 
   const newStatus =
     "https://anvaya-model-references-apis-backen.vercel.app/leads/status/New";
@@ -44,9 +39,7 @@ function Dashboard() {
   const qualfydStatus =
     "https://anvaya-model-references-apis-backen.vercel.app/leads/status/Qualified";
 
-  // const contStatus =
-  //   "https://anvaya-model-references-apis-backen.vercel.app/leads/status/Contacted";
-
+  
   async function getNewLeads() {
     try {
       const newLeads = await axios.get(newStatus);
@@ -93,7 +86,7 @@ function Dashboard() {
   // fetchDataByStatus('New');
 
   useEffect(() => {
-    fetchDataByStatus("New"); // Fetch once on mount safely here
+    fetchDataByStatus("New"); 
   }, []);
 
   return (
@@ -134,15 +127,15 @@ function Dashboard() {
             <p>New: {newLead.length}</p>
             <p>Qualified: {qualifiedLead.length}</p>
             <p>Proposal Sent: {proposalLead.length}</p>
-            {/* <p>Contacted: {contactedLeads?.length}</p> */}
+           
 
             <h2>Filtered by Status</h2>
             {loading && <div>Loading...</div>}
             {error && <div>{error}</div>}
 
-            <ul className="filteredStatusBox">
+            <ul className="listBox">
               {data.map((item) => (
-                <li key={item._id} className="statusFilteredList">
+                <li key={item._id} className="styleList">
                   <strong>{item.name}</strong> ({item.status})
                 </li>
               ))}
@@ -150,7 +143,7 @@ function Dashboard() {
             <br />
 
             <h2>Quick Filters</h2>
-            {/* <div style={{display: 'flex', flexWrap: 'wrap', }}> */}
+
             <div>
               <button
                 onClick={() => fetchDataByStatus("New")}

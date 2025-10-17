@@ -37,15 +37,16 @@ const SalesAgentManagement = () => {
           <h2>Sales Agent List</h2>
           <div
             style={{
-              border: "1px solid purple",
+              // border: "1px solid purple",
               borderRadius: "0.3rem",
               padding: "0rem 0.5rem",
+
             }}
-            className="salesAgentList"
+            className="salesAgentList listBox"
           >
             {salesAgent?.map((agent, index) => (
               <p key={agent._id}>
-                Agent {index + 1} : {""} <strong>{agent.name}</strong> -{" "}
+                <strong>Agent {index + 1}</strong> : &nbsp;&nbsp; <i>{agent.name}</i>&nbsp; -&nbsp;
                 {agent.email}
               </p>
             ))}

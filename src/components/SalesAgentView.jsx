@@ -92,16 +92,19 @@ const SalesAgentView = () => {
         <h2>Lead List by Agent</h2>
         <section>
          <p>Sales Agent: <strong>Alex Zem</strong></p>
+         <div className='listBox' style={{width: '60rem'}}>
         {leadsByAgents?.map((leads) => (
             <div key={leads._id}>
-                <p>Lead Name: <strong>&nbsp;{leads.name}</strong>&nbsp; &nbsp;&nbsp; Agent Name: <strong>&nbsp;{leads.salesAgent.name}({leads.salesAgent.email})</strong> Lead Status: &nbsp;<strong>{leads.status} &nbsp;</strong></p>
+                <p>Lead Name: <strong>&nbsp;{leads.name}</strong>&nbsp; &nbsp;&nbsp; Agent Name: <strong>&nbsp;{leads.salesAgent.name} ({leads.salesAgent.email})</strong>&nbsp;&nbsp; Lead Status: &nbsp;<strong>{leads.status} &nbsp;</strong></p>
             </div>
         ))}
+        </div>
         </section>
         <br/>
 
         <section>
             <h3>Leads Filtered by Priority</h3>
+            <div className="listBox" style={{width: '25rem'}}>
             {filteredLeads?.map((lead) => (
               <div key={lead._id}>
                 <p>
@@ -110,15 +113,18 @@ const SalesAgentView = () => {
                 </p>
               </div>
             ))}
+            </div>
           </section>
 
           <section>
           <h3>Sorted by Time to Close</h3>
+           <div className="listBox" style={{width: '25rem'}}>
           {sorted?.map((lead) => (
             <div key={lead._id}>
                 <p>Lead Name: <strong>{lead.name}</strong> - Time to Close: <strong>{lead.timeToClose}</strong></p>
             </div>
           ))}
+          </div>
           </section>
           
 
@@ -132,6 +138,7 @@ const SalesAgentView = () => {
                   name="priority"
                   value="High"
                   onChange={(e) => handleInputChange(e.target.value)}
+                  style={{accentColor: 'green'}}
                 />
                 High
               </label>
@@ -142,6 +149,7 @@ const SalesAgentView = () => {
                   name="priority"
                   value="Medium"
                   onChange={(e) => handleInputChange(e.target.value)}
+                  style={{accentColor: 'green'}}
                 />
                 Medium
               </label>
@@ -152,6 +160,7 @@ const SalesAgentView = () => {
                   name="priority"
                   value="Low"
                   onChange={(e) => handleInputChange(e.target.value)}
+                  style={{accentColor: 'green'}}
                 />
                 Low
               </label>
@@ -169,6 +178,7 @@ const SalesAgentView = () => {
                 value="Low to high"
                 checked={sort === "Low to high"}
                 onChange={handleSortChange}
+                style={{accentColor: 'green'}}
               />
               Time to Close- Low to high
             </label>
@@ -181,6 +191,7 @@ const SalesAgentView = () => {
                 value="High to low"
                 checked={sort === "High to low"}
                 onChange={handleSortChange}
+                style={{accentColor: 'green'}}
               />
               Time to Close- High to low
             </label>
