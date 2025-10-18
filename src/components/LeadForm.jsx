@@ -15,7 +15,8 @@ const LeadForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [salesAgents, setSalesAgents] = useState([]);
-  const [tags, setTags] = useState([]);
+ 
+  //
   const [loadingAgents, setLoadingAgents] = useState(true);
 
   //we are running this useEffect for one time only.
@@ -38,25 +39,7 @@ const LeadForm = () => {
     fetchSalesAgents();
   }, []);
 
-  useEffect(() => {
-    async function fetchTags() {
-      try {
-        console.log("Fetching tags...");
-        const response = await axios.get(
-          "https://anvaya-model-references-apis-backen.vercel.app/tags"
-        );
-        console.log("Tags are fetched:", response.data);
-        setTags(response.data);
-      } catch (error) {
-        console.error("Error in fetching tags:", error);
-        setTags([]);
-      } finally {
-        setLoadingAgents(false);
-      }
-    }
-    fetchTags();
-  }, []);
-
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     // console.log(name, value);
@@ -109,7 +92,6 @@ const LeadForm = () => {
         alert(
           ` Error: ${
             error.response.data.message ||
-            "please fill the form." ||
             "Failed to add lead"
           }`
         );
@@ -117,17 +99,11 @@ const LeadForm = () => {
         console.error("Network error:", error.request);
         alert("Network error: Please check your internet connection.");
       }
-
-      // else {
-      //   console.error("Error:", error.message);
-      //   alert(` Error: ${error.message}`);
-      // }
-      else if (error.message) {
+      else {
         console.error("Error:", error.message);
         alert(` Error: ${error.message}`);
-      } else {
-        console.error("please fill the form.");
       }
+      
     } finally {
       setIsSubmitting(false);
     }
@@ -205,7 +181,7 @@ const LeadForm = () => {
               <option value="New">New</option>
               <option value="Contacted">Contacted</option>
               <option value="Qualified">Qualified</option>
-              <option value="Proposal Sent">Proposal Sent</option>
+              <option value="Proposal_Sent">Proposal Sent</option>
               <option value="Closed">Closed</option>
             </select>
           </div>
@@ -217,6 +193,7 @@ const LeadForm = () => {
               name="priority"
               value={formData.priority}
               onChange={handleChange}
+              style={{AccentColor: 'green'}}
             >
               <option value="High">High</option>
               <option value="Medium">Medium</option>
@@ -229,7 +206,7 @@ const LeadForm = () => {
             <input
               type="number"
               name="timeToClose"
-              value={formData.timeToClose}
+              value={isNaN(formData.timeToClose) ? '' : formData.timeToClose}
               id="time"
               placeholder="Number of Days"
               onChange={handleChange}
@@ -244,13 +221,7 @@ const LeadForm = () => {
               value={formData.tags}
               onChange={handleChange}
             >
-              {/* <option value="">Tags</option>
-          // {tags.map((tag) => (
-          //   <option key={tag._id} value={tag.name}>
-          //     {tag.name}
-          //   </option>
-          // ))} */}
-
+              
               <option value="">Select Tags</option>
               <option value="hot-lead">Hot Lead</option>
               <option value="follow-up">Follow Up</option>

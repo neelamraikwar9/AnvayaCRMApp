@@ -109,6 +109,8 @@ const Report = () => {
 
         <div className="midContainer">
           <h2>Report Overview</h2>
+          <br />
+        
           <section>
             <p style={{ fontSize: "20px" }}>
               <strong>Total closed Leads and Leads in Pipeline: </strong>
@@ -116,9 +118,11 @@ const Report = () => {
 
             <div
               style={{
-                border: "1px solid red",
-                width: "30rem",
+                // border: "1px solid red",
+                width: "70rem",
                 height: "30rem",
+                display: "flex",
+                justifyContent: "center"
               }}
             >
               <Doughnut
@@ -137,30 +141,43 @@ const Report = () => {
                       borderWidth: 1,
                     },
                   ],
-
-                  // labels: ,
-                  // datasets: [
-                  //   {
-                  //     label: "Total Closed Leads in the Pipeline",
-                  //     data : closedLead?.map((lead) => lead?.timeToClose) || [],
-                  //     backgroundColor: "rgba(75,192,192,0.6)",
-                  //   }
-                  // ]
                 }}
+
+                 options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: "white",            // Legend text color
+          font: {
+            size: 14,                // Legend font size
+            weight: "bold",          // Legend font weight
+            family: "Arial"          // Legend font family
+          },
+          padding: 20                // Padding around legend items
+        }
+      }
+    }
+  }}
               />
             </div>
           </section>
+          <br />
+          <br />
+          <br />
+
 
           <section>
-            <p style={{ fontSize: "20px" }}>
+            <p style={{ fontSize: "20px"}}>
               <strong>Leads Closed by Sales Agent:</strong>
             </p>
             {/* <p>[Bar Chart]</p> */}
             <div
               style={{
-                border: "1px solid red",
-                width: "50rem",
+                // border: "1px solid red",
+                width: "75rem",
                 height: "30rem",
+                display: "flex",
+                justifyContent: "center"
               }}
             >
               <Bar
@@ -175,10 +192,29 @@ const Report = () => {
                     },
                   ],
                 }}
+
+                 options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: "white",            // Legend text color
+          font: {
+            size: 14,                // Legend font size
+            weight: "bold",          // Legend font weight
+            family: "Arial"          // Legend font family
+          },
+          padding: 20                // Padding around legend items
+        }
+      }
+    }
+  }}
               />
             </div>
           </section>
           <br />
+          <br />
+          <br />
+
 
           <section>
             <p style={{ fontSize: "20px" }}>
@@ -186,9 +222,11 @@ const Report = () => {
             </p>
             <div
               style={{
-                border: "1px solid red",
-                width: "30rem",
+                // border: "1px solid red",
+                width: "70rem",
                 height: "30rem",
+                display: "flex",
+                justifyContent: "center"
               }}
             >
               <Doughnut
@@ -206,6 +244,22 @@ const Report = () => {
                     },
                   ],
                 }}
+
+                 options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: "white",            // Legend text color
+          font: {
+            size: 14,                // Legend font size
+            weight: "bold",          // Legend font weight
+            family: "Arial"          // Legend font family
+          },
+          padding: 20                // Padding around legend items
+        }
+      }
+    }
+  }}
               />
             </div>
           </section>

@@ -1,15 +1,12 @@
-.outerContainer {
-    border: 1px solid rgb(136, 255, 0); 
-    background-color: rgb(44, 48, 38);
-    width: 100%;
-}
+
 
 
 .bigContainer {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: 1rem;
 }
 
 .navBarContainer {
@@ -25,7 +22,7 @@
 
 .mainContentContainer {
     /* border: 1px solid red; */
-    padding: 0rem 10rem;
+    padding: 0rem 2rem;
     /* width: 40rem; */
 
 
@@ -34,10 +31,11 @@
 .leads {
     display: flex;
     /* width: 63.5rem; */
-    /* width: 103.5rem;  */
+    width: 70rem;
+    padding: 0rem; 
 
-    /* justify-content: space-between; */
-    gap: 1rem;
+    justify-content: space-between;
+    /* gap: 1rem; */
     flex-wrap: wrap;
     /* border: 0.1px solid rgb(102, 170, 6);  */
 

@@ -133,8 +133,9 @@ const LeadList = () => {
           <br />
           
 
-          <section className="listBox" style={{width: '30rem'}}>
+          <section>
             <h2>Filtered Leads by Sales Agents:</h2>
+            <div  className="listBox" style={{width: '25rem'}}>
             {leadsByAgents?.map((agent) => (
               <div key={agent._id}>
                 <p>
@@ -150,11 +151,13 @@ const LeadList = () => {
                 </p>
               </div>
             ))}
+            </div>
           </section>
           <br />
 
-          <section className="listBox" style={{width: '55rem'}}>
+          <section>
             <h2>Sorted By Priority-</h2>
+            <div  className="listBox" style={{width: '50rem'}}>
             {/* {sortedLeads?.slice(0, 6).map((lead) => ( */}
             {sortedLeads?.map((lead) => (
               <div key={lead._id}>
@@ -178,6 +181,7 @@ const LeadList = () => {
                 </p>
               </div>
             ))}
+            </div>
           </section>
           <br />
 

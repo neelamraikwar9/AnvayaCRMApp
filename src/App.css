@@ -48,13 +48,13 @@ input {
 }
 
 .leadContainer {
-    border: 1px solid rgb(126, 16, 228);
+    /* border: 1px solid rgb(126, 16, 228); */
     width: 100rem;
     margin: 2rem;
 }
 
 .container {
-    border: 1px solid blueviolet;
+    /* border: 1px solid blueviolet; */
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -64,6 +64,7 @@ input {
     /* border: 1px solid blueviolet; */
     /* padding: 1rem 4rem; */
     /* height: 0rem; */
+    margin: 1rem 0rem;
     display: flex;
     justify-content: center;
     width: 18rem;
@@ -80,7 +81,7 @@ input {
 /* } */
 
 .midContainer {
-    border: 1px solid rgb(167, 140, 192);
+    /* border: 1px solid rgb(167, 140, 192); */
     padding: 0rem 5rem;
     width: 70rem;
 }

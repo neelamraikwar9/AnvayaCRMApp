@@ -16,7 +16,7 @@ function Navbar() {
     
           <div>
           <li className="styleList">
-            <NavLink to="/leadManagement" className="navLinkStyl">Leads</NavLink>
+            <NavLink to="/leadManagement" className="navLinkStyl">Lead Management</NavLink>
           </li>
           </div>
           
@@ -28,7 +28,7 @@ function Navbar() {
          
           <div>
           <li className="styleList">
-            <NavLink to="/salesAgentManagement" className="navLinkStyl">Sales Agent</NavLink>
+            <NavLink to="/salesAgentManagement" className="navLinkStyl">Sales Agent Management</NavLink>
           </li>
           </div>
           

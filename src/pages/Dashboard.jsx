@@ -91,7 +91,7 @@ function Dashboard() {
 
   return (
     <>
-      <div className="outerContainer">
+      <div>
         <div className="text">
           <h1>Anvaya CRM Dashboard</h1>
         </div>
@@ -113,7 +113,7 @@ function Dashboard() {
 
                     <p className="text">Name: {led.name}</p>
                     <p className="text">Source: {led.source}</p>
-                    <p className="text">Agent: {led.salesAgent.name}</p>
+                    <p className="text">Agent: {led.salesAgent?.name}</p>
                     <p className="text">Status: {led.status}</p>
                     <p className="text">Tags: {led.tags.join(", ")}</p>
                     <p className="text">Priority: {led.priority}</p>
@@ -134,9 +134,9 @@ function Dashboard() {
             {error && <div>{error}</div>}
 
             <ul className="listBox">
-              {data.map((item) => (
+              {data.map((item, index) => (
                 <li key={item._id} className="styleList">
-                  <strong>{item.name}</strong> ({item.status})
+                  <strong>Lead {index + 1} - </strong>Lead Name: <i>{item.name}</i> &nbsp;&nbsp;&nbsp;Status: <i>{item.status}</i>
                 </li>
               ))}
             </ul>
