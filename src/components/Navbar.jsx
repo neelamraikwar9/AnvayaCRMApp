@@ -46,7 +46,7 @@ function Navbar() {
 
           <div>
           <li className="styleList">
-            <NavLink to="/salesAgentView" className="navLinkStyl">sales Agent View</NavLink>
+            <NavLink to="/salesAgentView" className="navLinkStyl">Sales Agent View</NavLink>
           </li>
           </div>
 

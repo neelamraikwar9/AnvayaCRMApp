@@ -40,12 +40,12 @@ input {
 }
 
 .button {
-    background-color: rgb(34, 92, 35);
+    background-color: rgb(165, 249, 166);
 }
 
-.button:hover {
-    background-color: oklch(37.8% 0.077 168.94);
-}
+/* .button:hover {
+    background-color: oklch(50.094% 0.07847 174.011);
+} */
 
 .leadContainer {
     /* border: 1px solid rgb(126, 16, 228); */
@@ -98,7 +98,15 @@ input {
     margin: 1rem;
     padding: 1rem;
     color: aqua;
-    border: 1px solid rgb(5, 190, 116);
+    background-color: black;
+    border: 0.1px solid rgb(5, 190, 116);
+}
+
+.filBtnStyl:hover {
+    background-color: rgb(43, 191, 67);
+    border: 1px solid rgb(240, 234, 61);
+    color: white;
+
 }
 
 .styleList {
@@ -107,4 +115,22 @@ input {
 
 .navLinkStyl {
     color: white;
+}
+
+.delBtn {
+    width: 6rem;
+    height: 3rem;
+    background-color: oklch(70.4% 0.191 22.216); 
+    margin: 1rem;
+    color: whitesmoke
+}
+
+.delBtn:hover {
+    background-color: oklch(63.7% 0.237 25.331);
+    border:none;
+    color:aliceblue
+}
+
+.settingListCon {
+    display:flex;
 }

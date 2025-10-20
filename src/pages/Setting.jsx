@@ -5,7 +5,11 @@ import { useState, useEffect } from "react";
 const Setting = () => {
   const [leads, setLeads] = useState([]);
   const [salesAgent, setSalesAgent] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   console.log(leads, "leads");
+
+    
 
   useEffect(() => {
     async function getAllLeadApi() {
@@ -67,6 +71,9 @@ const Setting = () => {
     }
   }
 
+
+
+
   return (
     <main className="leadContainer">
       <h1 className="text">Setting</h1>
@@ -79,10 +86,13 @@ const Setting = () => {
 
         <div className="midContainer">
           <h2>All Leads:</h2>
-          <div>
-            {leads.slice(0, 2)?.map((lead) => (
-              <ul key={lead._id} style={{ border: "1px green solid", width: '50rem', borderRadius: '1rem'}}>
-                <li className="styleList">
+          
+            {leads?.map((lead) => (
+              
+              
+              <div className="settingListCon">
+              <ul key={lead._id} style={{ border: "1px green solid", width: '40rem', borderRadius: '0.9rem'}}>
+                <li className="styleList" style={{padding: '1rem'}}> 
                   Lead Name: &nbsp;
                   <strong>
                     <i>{lead.name}</i>
@@ -100,21 +110,25 @@ const Setting = () => {
                     <i>{lead.priority}</i>
                   </strong>
                   &nbsp;{" "}
-                   &nbsp;
-                    &nbsp; &nbsp; &nbsp;
-                  <button value={lead._id} onClick={handleLeadDelete}>
-                    Delete
-                  </button>
+                   {/* &nbsp;
+                    &nbsp; &nbsp; &nbsp; */}
                 </li>
               </ul>
+
+              <button className="delBtn" value={lead._id} onClick={handleLeadDelete}>
+                    Delete
+                  </button>
+              </div>
             ))}
-          </div>
+            
+        
 
           <h2>All Sales Agent:</h2>
-          <div>
+          
             {salesAgent?.map((agent) => (
-              <ul key={agent._id} style={{ border: "1px green solid", width: '50rem', borderRadius: '1rem'}}>
-                <li className="styleList">
+              <div className="settingListCon">
+              <ul key={agent._id} style={{ border: "1px green solid", width: '35rem', borderRadius: '0.9rem', display: 'flex'}}>
+                <li className="styleList" style={{padding: '1rem'}}>
                   Sales Agent Name: &nbsp;
                   <strong>
                     <i>{agent.name}</i>
@@ -125,13 +139,15 @@ const Setting = () => {
                   </strong>
                   &nbsp; &nbsp;{" "}
                    &nbsp; &nbsp; &nbsp; &nbsp;
-                  <button value={agent._id} onClick={handleSalesAgentDelete}>
-                    Delete
-                  </button>
+                  
                 </li>
               </ul>
+              <button className="delBtn" value={agent._id} onClick={handleSalesAgentDelete}>
+                    Delete
+                  </button>
+              </div>
             ))}
-          </div>
+          
         </div>
       </div>
     </main>
