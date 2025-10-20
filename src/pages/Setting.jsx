@@ -9,8 +9,6 @@ const Setting = () => {
   const [error, setError] = useState(null);
   console.log(leads, "leads");
 
-    
-
   useEffect(() => {
     async function getAllLeadApi() {
       try {
@@ -19,13 +17,17 @@ const Setting = () => {
         );
         console.log(res.data);
         setLeads(res.data);
+        setIsLoading(false);
 
         const resAllSalesAgent = await axios.get(
           "https://anvaya-model-references-apis-backen.vercel.app/salesAgent"
         );
         console.log(resAllSalesAgent, "sales");
         setSalesAgent(resAllSalesAgent.data);
+        setIsLoading(false);
       } catch (error) {
+        setError(err.message);
+        setError(err.message);
         console.log("Error message: ", error.message);
       }
     }
@@ -71,9 +73,6 @@ const Setting = () => {
     }
   }
 
-
-
-
   return (
     <main className="leadContainer">
       <h1 className="text">Setting</h1>
@@ -86,13 +85,19 @@ const Setting = () => {
 
         <div className="midContainer">
           <h2>All Leads:</h2>
-          
-            {leads?.map((lead) => (
-              
-              
-              <div className="settingListCon">
-              <ul key={lead._id} style={{ border: "1px green solid", width: '40rem', borderRadius: '0.9rem'}}>
-                <li className="styleList" style={{padding: '1rem'}}> 
+          {isLoading && <p> Leads are Loading...</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          {leads?.map((lead) => (
+            <div className="settingListCon">
+              <ul
+                key={lead._id}
+                style={{
+                  border: "1px green solid",
+                  width: "40rem",
+                  borderRadius: "0.9rem",
+                }}
+              >
+                <li className="styleList" style={{ padding: "1rem" }}>
                   Lead Name: &nbsp;
                   <strong>
                     <i>{lead.name}</i>
@@ -110,25 +115,40 @@ const Setting = () => {
                     <i>{lead.priority}</i>
                   </strong>
                   &nbsp;{" "}
-                   {/* &nbsp;
+                  {/* &nbsp;
                     &nbsp; &nbsp; &nbsp; */}
                 </li>
               </ul>
 
-              <button className="delBtn" value={lead._id} onClick={handleLeadDelete}>
-                    Delete
-                  </button>
-              </div>
-            ))}
-            
-        
+              <button
+                className="delBtn"
+                value={lead._id}
+                onClick={handleLeadDelete}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+
+          <br/>
+          <br/>
+
 
           <h2>All Sales Agent:</h2>
-          
-            {salesAgent?.map((agent) => (
-              <div className="settingListCon">
-              <ul key={agent._id} style={{ border: "1px green solid", width: '35rem', borderRadius: '0.9rem', display: 'flex'}}>
-                <li className="styleList" style={{padding: '1rem'}}>
+          {isLoading && <p>Sales Agent are Loading...</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          {salesAgent?.map((agent) => (
+            <div className="settingListCon">
+              <ul
+                key={agent._id}
+                style={{
+                  border: "1px green solid",
+                  width: "35rem",
+                  borderRadius: "0.9rem",
+                  display: "flex",
+                }}
+              >
+                <li className="styleList" style={{ padding: "1rem" }}>
                   Sales Agent Name: &nbsp;
                   <strong>
                     <i>{agent.name}</i>
@@ -137,17 +157,18 @@ const Setting = () => {
                   <strong>
                     <i>{agent.email}</i>
                   </strong>
-                  &nbsp; &nbsp;{" "}
-                   &nbsp; &nbsp; &nbsp; &nbsp;
-                  
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 </li>
               </ul>
-              <button className="delBtn" value={agent._id} onClick={handleSalesAgentDelete}>
-                    Delete
-                  </button>
-              </div>
-            ))}
-          
+              <button
+                className="delBtn"
+                value={agent._id}
+                onClick={handleSalesAgentDelete}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </main>

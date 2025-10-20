@@ -40,12 +40,16 @@ input {
 }
 
 .button {
-    background-color: rgb(165, 249, 166);
+    background-color: oklch(70.4% 0.14 182.503);
+    color: white;
+
 }
 
-/* .button:hover {
-    background-color: oklch(50.094% 0.07847 174.011);
-} */
+.button:hover {
+    background-color: oklch(51.1% 0.096 186.391);
+    border: none;
+
+}
 
 .leadContainer {
     /* border: 1px solid rgb(126, 16, 228); */
@@ -62,23 +66,12 @@ input {
 
 .backButn {
     /* border: 1px solid blueviolet; */
-    /* padding: 1rem 4rem; */
-    /* height: 0rem; */
     margin: 1rem 0rem;
     display: flex;
     justify-content: center;
     width: 18rem;
-
 }
 
-/* .btnback:hover{ */
-    /* border :1px solid aquamarine; */
-    /* background-color: aquamarine; */
-    
-    /* background-color: #7c3aed;  */
-  /* border-color: #3cc09b;       */
-  /* color: #fff;                 */
-/* } */
 
 .midContainer {
     /* border: 1px solid rgb(167, 140, 192); */
@@ -103,10 +96,9 @@ input {
 }
 
 .filBtnStyl:hover {
-    background-color: rgb(43, 191, 67);
-    border: 1px solid rgb(240, 234, 61);
+    background-color: oklch(76.5% 0.177 163.223);
+    border: 1px solid white;
     color: white;
-
 }
 
 .styleList {
@@ -120,17 +112,17 @@ input {
 .delBtn {
     width: 6rem;
     height: 3rem;
-    background-color: oklch(70.4% 0.191 22.216); 
+    background-color: oklch(70.4% 0.191 22.216);
     margin: 1rem;
     color: whitesmoke
 }
 
 .delBtn:hover {
     background-color: oklch(63.7% 0.237 25.331);
-    border:none;
-    color:aliceblue
+    border: none;
+    color: aliceblue
 }
 
 .settingListCon {
-    display:flex;
+    display: flex;
 }
