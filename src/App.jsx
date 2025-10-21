@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-
 import LeadForm from "./components/LeadForm";
 import AgentForm from "./components/AgentForm";
 import Dashboard from "./pages/Dashboard";
