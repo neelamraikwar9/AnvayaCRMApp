@@ -54,7 +54,7 @@ input {
 .leadContainer {
     border: 1px solid rgb(126, 16, 228);
     /* width: 100rem; */
-    margin: 2rem 4rem;
+    /* margin: 2rem 4rem; */
 }
 
 .container {
@@ -76,7 +76,7 @@ input {
 .midContainer {
     border: 1px solid rgb(167, 140, 192);
     /* padding: 0rem 5rem; */
-    width: 70rem;
+    /* width: 70rem; */
 }
 
 .listBox {
