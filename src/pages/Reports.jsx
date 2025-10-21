@@ -109,7 +109,7 @@ const Report = () => {
         </div>
         </div>
 
-        <div className="midContainer">
+        <div className="midContainer" style={{ width: "54rem" }}>
           <h2>Report Overview</h2>
           <br />
         

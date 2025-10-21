@@ -138,7 +138,6 @@ function LeadManagement() {
       // setLead(editForm);
       window.location.reload();
 
-
       alert("✅ Lead details edited successfully!");
     } catch (error) {
       console.log(error, "error");
@@ -152,15 +151,15 @@ function LeadManagement() {
         Lead Management: {lead.slice(0, 1)?.map((led) => led.name)}
       </h1>
       <div className="container">
-      <div  className="backBtnCont" >
-        <div className="backButn" >
-          <Link to="/">
-            <button >Back to Dashboard</button>
-          </Link>
-        </div>
+        <div className="backBtnCont">
+          <div className="backButn">
+            <Link to="/">
+              <button>Back to Dashboard</button>
+            </Link>
+          </div>
         </div>
 
-        <div className="midContainer">
+        <div className="midContainer" style={{width: '54rem'}} >
           <div>
             <h2>Lead Details</h2>
             {lead?.slice(0, 1)?.map((led) => (
@@ -194,7 +193,7 @@ function LeadManagement() {
             {/* model for editing. */}
 
             <br />
-          
+
             {showFormModel &&
               edit.slice(0, 1).map((item, index) => (
                 <div key={item._id}>
@@ -204,8 +203,7 @@ function LeadManagement() {
 
                       handleEdit(item._id, edit, index);
                     }}
-                   className="editForm"
-                    
+                    className="editForm"
                   >
                     <label>Lead Name: </label>
                     <input
@@ -213,7 +211,6 @@ function LeadManagement() {
                       name="name"
                       value={item.name || ""}
                       onChange={(e) => onInputChange(e, index)}
-  
                       className="inpStyl"
                     />
                     <br />
@@ -289,8 +286,10 @@ function LeadManagement() {
                     />
                     <br />
 
-                    <div style={{ display: "flex", gap: "1rem" }} >
-                      <button type="submit" className="editBtn">Save</button>
+                    <div style={{ display: "flex", gap: "1rem" }}>
+                      <button type="submit" className="editBtn">
+                        Save
+                      </button>
 
                       <button
                         type="button"

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 
 const SalesAgentManagement = () => {
   const [salesAgent, setSalesAgent] = useState([]);
-   const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const agentsApi =
     "https://anvaya-model-references-apis-backen.vercel.app/salesAgent";
@@ -31,30 +31,29 @@ const SalesAgentManagement = () => {
     <main className="leadContainer">
       <h1 className="text">Sales Agent Management</h1>
       <div className="container">
-      <div  className="backBtnCont" >
-        <div className="backButn">
-          <Link to="/">
-            <button>Back to Dashboard</button>
-          </Link>
-        </div>
+        <div className="backBtnCont">
+          <div className="backButn">
+            <Link to="/">
+              <button>Back to Dashboard</button>
+            </Link>
+          </div>
         </div>
 
-        <div className="midContainer">
+        <div className="midContainer" style={{ width: "56rem" }}>
           <h2>Sales Agent List</h2>
           <div
             style={{
-             
               borderRadius: "0.3rem",
               padding: "0rem 0.5rem",
-
             }}
             className="salesAgentList listBox"
           >
-           {isLoading && <p> Leads are Loading...</p>}
-          {error && <p style={{ color: "red" }}>{error}</p>}
+            {isLoading && <p> Leads are Loading...</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
             {salesAgent?.map((agent, index) => (
               <p key={agent._id}>
-                <strong>Agent {index + 1}</strong> : &nbsp;&nbsp; <i>{agent.name}</i>&nbsp; -&nbsp;
+                <strong>Agent {index + 1}</strong> : &nbsp;&nbsp;{" "}
+                <i>{agent.name}</i>&nbsp; -&nbsp;
                 {agent.email}
               </p>
             ))}

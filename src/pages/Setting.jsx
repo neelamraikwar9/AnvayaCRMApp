@@ -85,7 +85,7 @@ const Setting = () => {
           </div>
         </div>
 
-        <div className="midContainer">
+        <div className="midContainer" style={{ width: "54rem" }}>
           <h2>All Leads:</h2>
           {isLoading && <p> Leads are Loading...</p>}
           {error && <p style={{ color: "red" }}>{error}</p>}

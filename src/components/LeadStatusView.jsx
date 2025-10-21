@@ -113,7 +113,7 @@ const LeadStatusView = () => {
         </div>
         </div>
 
-        <div className="midContainer">
+        <div className="midContainer" style={{ width: "54rem" }}>
           <h2>Lead List by Status</h2>
           <section>
             <h3>Status: Qualified</h3>

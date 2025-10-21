@@ -105,7 +105,7 @@ const SalesAgentView = () => {
         </div>
         </div>
 
-        <div className="midContainer">
+        <div className="midContainer" style={{ width: "54rem" }}>
         <h2>Lead List by Agent</h2>
         <section>
          <p>Sales Agent: <strong>Alex Zem</strong></p>
