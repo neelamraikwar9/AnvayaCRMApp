@@ -20,14 +20,23 @@ function LeadManagement() {
 
   const [showFormModel, setShowFormModel] = useState(false);
   const [edit, setEdit] = useState(lead);
+
+  
   console.log(JSON.stringify(edit), "checking edit");
 
-  // const [editForm, setEditForm] = useState();
+  const [editForm, setEditForm] = useState();
+  console.log(editForm, "editform")
+
+  // const [oneLead, setOneLead] = useState();
 
   useEffect(() => {
-    setEdit(lead);
-    console.log(edit, "chekdignedit...");
-  }, [lead]);
+  setEdit(lead);
+}, [lead]);
+
+
+// useEffect(() => {
+//   setLead(editForm)
+// }, [editForm])
 
   useEffect(() => {
     async function fetchComments() {
@@ -47,8 +56,7 @@ function LeadManagement() {
     fetchComments();
   }, []);
 
-  useEffect(() => {
-    async function fetchLeads() {
+   async function fetchLeads() {
       try {
         console.log("Fetching lead...");
         const res = await axios.get(
@@ -61,8 +69,28 @@ function LeadManagement() {
         setLead([]);
       }
     }
+
+  useEffect(() => {
+   
     fetchLeads();
   }, []);
+
+  // useEffect(() => {
+  //   async function fetchOneLead() {
+  //     try {
+  //       console.log("Fetching lead...");
+  //       const res = await axios.get(
+  //         "https://anvaya-model-references-apis-backen.vercel.app/leads/68f3057c72ca23fcae85d07b"
+  //       );
+  //       console.log("OneLead is fetched:", res.data);
+  //       setOneLead(res.data);
+  //     } catch (error) {
+  //       console.error("Error in fetching lead: ", error);
+  //       setOneLead([]);
+  //     }
+  //   }
+  //   fetchOneLead();
+  // }, []);
 
   async function handleOnChange(e) {
     const { name, value } = e.target;
@@ -134,15 +162,28 @@ function LeadManagement() {
       setShowFormModel(false);
       console.log(res, "checking res.");
       console.log("Lead details edited successfully", res.data);
-      // setEditForm(res.data);
-      // setLead(editForm);
-      window.location.reload();
-
+      // setEdit(prev => prev.map(l => l._id === res.data._id ? res.data : l));
+      // setLead(prev => prev.map(l => l._id === res.data._id ? res.data : l));
+      setEditForm(res.data);
+      // setOneLead(res.data);
+     
+      fetchLeads()
       alert("✅ Lead details edited successfully!");
+
     } catch (error) {
       console.log(error, "error");
     }
   }
+
+
+  // useEffect(() => {
+  //   if(editForm){
+  //   setOneLead(editForm)
+  //   }
+  // }, [editForm]);
+
+
+  
 
   return (
     <main className="leadContainer">
@@ -162,13 +203,13 @@ function LeadManagement() {
         <div className="midContainer" style={{ width: "54rem" }}>
           <div>
             <h2>Lead Details</h2>
-            {lead?.slice(0, 1)?.map((led) => (
-              <div key={led._id}>
+            {lead.slice(0, 1)?.map((led) => (
+              <>
                 <p>
-                  <strong>Lead Name:</strong>&nbsp; {led.name}
+                  <strong>Lead Name:</strong>&nbsp; {led?.name}
                 </p>
                 <p>
-                  <strong>Sales Agent:</strong> &nbsp;{led.salesAgent.name}
+                  <strong>Sales Agent:</strong> &nbsp;{led?.salesAgent?.name}
                 </p>
                 <p>
                   <strong>Lead Source:</strong> &nbsp;{led.source}
@@ -177,13 +218,14 @@ function LeadManagement() {
                   <strong>Lead Status:</strong> &nbsp;{led.status}
                 </p>
                 <p>
-                  <strong>Priority:</strong> &nbsp;{led.priority}
+                  <strong>Priority:</strong> &nbsp;{led?.priority}
                 </p>
                 <p>
-                  <strong>Time to Close:</strong> &nbsp;{led.timeToClose} Days
+                  <strong>Time to Close:</strong> &nbsp;{led?.timeToClose} Days
                 </p>
-              </div>
+              </>
             ))}
+            </div>
 
             <br />
 
@@ -194,7 +236,8 @@ function LeadManagement() {
 
             <br />
 
-            {showFormModel &&
+            <div>
+             {showFormModel &&
               edit.slice(0, 1).map((item, index) => (
                 <div key={item._id}>
                   <form
@@ -218,7 +261,7 @@ function LeadManagement() {
                     <label>Sales Agent:</label>
                     <select
                       name="salesAgent"
-                      value={item.salesAgent || ""}
+                      value={item.salesAgent?._id || ""}
                       onChange={(e) => onInputChange(e, index)}
                       className="inpStyl"
                     >
@@ -301,7 +344,9 @@ function LeadManagement() {
                     </div>
                   </form>
                 </div>
-              ))}
+             ))}
+
+              
           </div>
           <br />
           <br />
