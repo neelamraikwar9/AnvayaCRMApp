@@ -22,6 +22,8 @@ function LeadManagement() {
   const [edit, setEdit] = useState(lead);
   console.log(JSON.stringify(edit), "checking edit");
 
+  const [editForm, setEditForm] = useState();
+
   useEffect(() => {
     setEdit(lead);
     console.log(edit, "chekdignedit...");
@@ -131,8 +133,11 @@ function LeadManagement() {
       );
       setShowFormModel(false);
       console.log(res, "checking res.");
-
       console.log("Lead details edited successfully", res.data);
+      // setEditForm(res.data);
+      // setLead(editForm);
+      window.location.reload();
+
 
       alert("✅ Lead details edited successfully!");
     } catch (error) {
@@ -143,6 +148,7 @@ function LeadManagement() {
   return (
     <main className="leadContainer">
       <h1 className="text">
+        {/* Lead Management: {lead.slice(0, 1)?.map((led) => led.name)} */}
         Lead Management: {lead.slice(0, 1)?.map((led) => led.name)}
       </h1>
       <div className="container">
@@ -180,7 +186,7 @@ function LeadManagement() {
 
             <br />
 
-            <button onClick={() => setShowFormModel(true)}>
+            <button onClick={() => setShowFormModel(true)} className="editBtn">
               Edit Lead Details
             </button>
             {/* model for editing. */}
@@ -198,6 +204,8 @@ function LeadManagement() {
 
                       handleEdit(item._id, edit, index);
                     }}
+                   className="editForm"
+                    
                   >
                     <label>Lead Name: </label>
                     <input
@@ -205,6 +213,8 @@ function LeadManagement() {
                       name="name"
                       value={item.name || ""}
                       onChange={(e) => onInputChange(e, index)}
+  
+                      className="inpStyl"
                     />
                     <br />
 
@@ -213,6 +223,7 @@ function LeadManagement() {
                       name="salesAgent"
                       value={item.salesAgent || ""}
                       onChange={(e) => onInputChange(e, index)}
+                      className="inpStyl"
                     >
                       {salesAgents.map((agent) => (
                         <option key={agent._id} value={agent._id}>
@@ -228,6 +239,7 @@ function LeadManagement() {
                       name="source"
                       value={item.source || ""}
                       onChange={(e) => onInputChange(e, index)}
+                      className="inpStyl"
                     >
                       <option value="">Select Source</option>
                       <option value="Website">Website</option>
@@ -244,6 +256,7 @@ function LeadManagement() {
                       name="status"
                       value={item.status || ""}
                       onChange={(e) => onInputChange(e, index)}
+                      className="inpStyl"
                     >
                       <option value="New">New</option>
                       <option value="Contacted">Contacted</option>
@@ -258,6 +271,7 @@ function LeadManagement() {
                       name="priority"
                       value={item.priority || ""}
                       onChange={(e) => onInputChange(e, index)}
+                      className="inpStyl"
                     >
                       <option value="High">High</option>
                       <option value="Medium">Medium</option>
@@ -271,14 +285,16 @@ function LeadManagement() {
                       name="timeToClose"
                       value={item.timeToClose || ""}
                       onChange={(e) => onInputChange(e, index)}
+                      className="inpStyl"
                     />
                     <br />
 
-                    <div style={{ display: "flex", gap: "1rem" }}>
-                      <button type="submit">Save</button>
+                    <div style={{ display: "flex", gap: "1rem" }} >
+                      <button type="submit" className="editBtn">Save</button>
 
                       <button
                         type="button"
+                        className="editBtn"
                         onClick={() => setShowFormModel(false)}
                       >
                         Cancel

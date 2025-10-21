@@ -53,7 +53,7 @@ input {
 
 .leadContainer {
     border: 1px solid rgb(126, 16, 228);
-    width: 100rem;
+    /* width: 100rem; */
     margin: 2rem 4rem;
 }
 
@@ -75,7 +75,7 @@ input {
 
 .midContainer {
     border: 1px solid rgb(167, 140, 192);
-    padding: 0rem 5rem;
+    /* padding: 0rem 5rem; */
     width: 70rem;
 }
 
@@ -126,3 +126,9 @@ input {
 .settingListCon {
     display: flex;
 }
+
+.inpStyl {
+    font-size: 16px;
+}
+
+

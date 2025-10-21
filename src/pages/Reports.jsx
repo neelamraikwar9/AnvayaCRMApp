@@ -119,10 +119,10 @@ const Report = () => {
             <div
               style={{
                 // border: "1px solid red",
-                width: "70rem",
+                width: "50rem",
                 height: "30rem",
-                display: "flex",
-                justifyContent: "center"
+                // display: "flex",
+                // justifyContent: "center"
               }}
             >
               <Doughnut
@@ -174,10 +174,10 @@ const Report = () => {
             <div
               style={{
                 // border: "1px solid red",
-                width: "75rem",
+                width: "50rem",
                 height: "30rem",
-                display: "flex",
-                justifyContent: "center"
+                // display: "flex",
+                // justifyContent: "center"
               }}
             >
               <Bar
@@ -223,10 +223,10 @@ const Report = () => {
             <div
               style={{
                 // border: "1px solid red",
-                width: "70rem",
+                width: "50rem",
                 height: "30rem",
-                display: "flex",
-                justifyContent: "center"
+                // display: "flex",
+                // justifyContent: "center"
               }}
             >
               <Doughnut
