@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 const SalesAgentManagement = () => {
   const [salesAgent, setSalesAgent] = useState([]);
+   const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
   const agentsApi =
     "https://anvaya-model-references-apis-backen.vercel.app/salesAgent";
@@ -13,7 +15,9 @@ const SalesAgentManagement = () => {
       const res = await axios.get(agentsApi);
       console.log(res.data);
       setSalesAgent(res.data);
+      setIsLoading(false);
     } catch (error) {
+      setError(error.message);
       console.error("Error message: ", error.message);
     }
   }
@@ -37,13 +41,15 @@ const SalesAgentManagement = () => {
           <h2>Sales Agent List</h2>
           <div
             style={{
-              // border: "1px solid purple",
+             
               borderRadius: "0.3rem",
               padding: "0rem 0.5rem",
 
             }}
             className="salesAgentList listBox"
           >
+           {isLoading && <p> Leads are Loading...</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
             {salesAgent?.map((agent, index) => (
               <p key={agent._id}>
                 <strong>Agent {index + 1}</strong> : &nbsp;&nbsp; <i>{agent.name}</i>&nbsp; -&nbsp;

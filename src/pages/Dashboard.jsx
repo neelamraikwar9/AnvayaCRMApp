@@ -10,7 +10,7 @@ function Dashboard() {
   const [proposalLead, setProposalLead] = useState([]);
   const [qualifiedLead, setQualifiedLead] = useState([]);
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
   const AllLeadApi =
@@ -21,7 +21,9 @@ function Dashboard() {
       const res = await axios.get(AllLeadApi);
       console.log(res.data);
       setLead(res.data);
+      setLoading(false)
     } catch (error) {
+      setError(err.message)
       console.log("Error message: ", error.message);
     }
   }
@@ -103,14 +105,14 @@ function Dashboard() {
 
           <div className="mainContentContainer">
             <h2>Leads</h2>
-
+             {loading && <p>Leads are Loading...</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <div className="leads">
               {lead.slice(0, 4)?.map((led, index) => (
                 <div key={led._id}>
                   <div className="leadBoxes">
-                    {/* {console.log(led.name, "checking lead naem ;")} */}
+                  
                     <h2 className="text">Lead {index + 1}</h2>
-
                     <p className="text">Name: {led.name}</p>
                     <p className="text">Source: {led.source}</p>
                     <p className="text">Agent: {led.salesAgent?.name}</p>
@@ -130,7 +132,7 @@ function Dashboard() {
            
 
             <h2>Filtered by Status</h2>
-            {loading && <div>Loading...</div>}
+            {loading && <div>Leads are Loading...</div>}
             {error && <div>{error}</div>}
 
             <ul className="listBox">

@@ -4,29 +4,44 @@ import { useState, useEffect } from "react";
 
 const LeadStatusView = () => {
   const [proposal, setProposal] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [leads, setLeads] = useState([]);
   const [filteredLeads, setFilteredLeads] = useState();
   const [sort, setSort] = useState("");
   const [sorted, setSorted] = useState([]);
+  const [filMessage, setFilMessage] = useState(true);
 
   useEffect(() => {
     async function fetchQualifiedLeads() {
+      try{
       const qualfydStatus = await axios.get(
         "https://anvaya-model-references-apis-backen.vercel.app/leads/status/Qualified"
       );
       console.log(qualfydStatus.data, "qualfydStatus");
       setProposal(qualfydStatus.data);
+      setIsLoading(false);
+    } catch(error){
+      setError(error.message);
+      console.log(error)
+    }
     }
     fetchQualifiedLeads();
   }, []);
 
   useEffect(() => {
     async function fetchLeads() {
+      try{
       const fetchLeads = await axios.get(
         "https://anvaya-model-references-apis-backen.vercel.app/leads"
       );
       console.log("leads", fetchLeads.data);
       setLeads(fetchLeads.data);
+      setIsLoading(false);
+    } catch(error){
+      setError(error.message);
+      throw error;
+    }
     }
     fetchLeads();
   }, []);
@@ -36,6 +51,7 @@ const LeadStatusView = () => {
   function handleInputChange(value) {
     const filtered = leads?.filter((lead) => lead.priority === value);
     setFilteredLeads(filtered, "filtered");
+     setFilMessage(false);
     console.log(filtered, "checking leads");
   }
 
@@ -100,8 +116,10 @@ const LeadStatusView = () => {
           <section>
             <h3>Status: Qualified</h3>
             <div style={{}} className="listBox">
+            {isLoading && <p> Leads are Loading...</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
               {proposal?.map((prop, index) => (
-                <div key={prop._id} style={{ border: "1px" }} >
+                <div key={prop._id} style={{ border: "1px" }}>
                   <p>
                     <strong>Lead {index + 1}</strong> &nbsp; - &nbsp;
                     <strong>Lead Name: </strong>&nbsp;{prop.name}&nbsp; &nbsp;
@@ -116,7 +134,12 @@ const LeadStatusView = () => {
           <br />
           <section>
             <h2>Leads Filtered by Priority</h2>
+            {isLoading && <p> Leads are Loading...</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          {/* {filMessage && <p>Select Leads Filter by Priority to see filter.</p>} */}
             <div className="listBox" style={{width: '25rem', }}>
+          {filMessage && <p>Select Leads Filter by Priority to see filter.</p>}
+
             {filteredLeads?.map((lead) => (
               <div key={lead._id} >
                 <p>
@@ -130,6 +153,8 @@ const LeadStatusView = () => {
           
           <section>
           <h2>Sorted by Time to Close</h2>
+           {isLoading && <p> Leads are Loading...</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <div className="listBox" style={{width: '30rem', }}>
           {sorted?.map((lead) => (
             <div key={lead._id}>

@@ -11,7 +11,7 @@
 
 .navBarContainer {
     border: 1px solid rgb(30, 189, 78);
-    padding: 1rem 4rem;
+    padding: 1rem 3.5rem;
     margin: 4.6rem 2.5rem;
     height: 21rem;
     border-radius: 1rem;
@@ -21,26 +21,23 @@
 }
 
 .mainContentContainer {
-    /* border: 1px solid red; */
-    padding: 0rem 2rem;
-    /* width: 40rem; */
-
-
+    border: 1px solid red;
+    /* padding: 0rem 2rem; */
+    width:75rem;
+    /* height: 40rem; */
 }
 
 .leads {
     display: flex;
     /* width: 63.5rem; */
-    width: 75rem;
+    width: 65rem;
     padding: 0rem; 
+    margin: 1rem;
 
-    /* justify-content: space-between; */
-    gap: 1rem; 
+    justify-content: space-around;
+    /* gap: 1rem;  */
     flex-wrap: wrap;
     border: 0.1px solid rgb(102, 170, 6); 
-
-
-
 }
 
 .leadBoxes {
@@ -51,22 +48,4 @@
     margin: 0rem 0.3rem;
 }
 
-/* .listBox {
-    border: 1px solid rgb(5, 190, 116);
-    border-radius: 0.3rem;
-    background-color: rgb(48, 100, 79);
-    padding: 1rem;
-    width: 20rem;
 
-} */
-
-/* .styleList {
-    list-style: none;
-} */
-
-/* .filBtnStyl {
-    margin: 1rem;
-    padding: 1rem;
-    color: aqua;
-    border: 1px solid rgb(5, 190, 116);
-} */

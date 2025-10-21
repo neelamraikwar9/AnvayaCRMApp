@@ -52,13 +52,13 @@ input {
 }
 
 .leadContainer {
-    /* border: 1px solid rgb(126, 16, 228); */
+    border: 1px solid rgb(126, 16, 228);
     width: 100rem;
-    margin: 2rem;
+    margin: 2rem 4rem;
 }
 
 .container {
-    /* border: 1px solid blueviolet; */
+    border: 1px solid blueviolet;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -74,7 +74,7 @@ input {
 
 
 .midContainer {
-    /* border: 1px solid rgb(167, 140, 192); */
+    border: 1px solid rgb(167, 140, 192);
     padding: 0rem 5rem;
     width: 70rem;
 }

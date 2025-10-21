@@ -1,10 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import  useApiContext  from "../UseApiContext";
 
 const LeadList = () => {
-  //  const { salesAgents }  =  useApiContext();
   const [salesAgents, setSalesAgents] = useState([]);
   console.log(salesAgents, "checking api salsesagent");
 
@@ -26,11 +24,14 @@ const LeadList = () => {
   }, []);
 
   const [leads, setLeads] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [leadsByAgents, setLeadsByAgents] = useState([]);
   const [sortByPriority, setSortByPriority] = useState(" ");
 
   const [sortedLeads, setSortedLeads] = useState();
-  console.log(sortedLeads, "sortedLeads");
+  // console.log(sortedLeads, "sortedLeads");
+  const [selectFilter, setSelectFilter] = useState(true);
 
   const AllLeadApi =
     "https://anvaya-model-references-apis-backen.vercel.app/leads";
@@ -40,7 +41,9 @@ const LeadList = () => {
       const res = await axios.get(AllLeadApi);
       console.log(res.data);
       setLeads(res.data);
+      setIsLoading(false);
     } catch (error) {
+      setError(error.message);
       console.log("Error message: ", error.message);
     }
   }
@@ -55,6 +58,7 @@ const LeadList = () => {
     );
     console.log(res.data, "checkigres lead by agenId");
     setLeadsByAgents(res.data);
+    setSelectFilter(false);
   }
 
   function handleSortByPriority(e) {
@@ -84,7 +88,7 @@ const LeadList = () => {
 
       console.log(lowToHigh, "lowToHigh");
     } else if (sortByPriority === "High to Low") {
-      console.log("inside else if");
+      // console.log("inside else if");
       const highToLow = sortLeads.sort((a, b) => {
         return (
           priorityOrder[b.priority.toLowerCase()] -
@@ -114,6 +118,8 @@ const LeadList = () => {
           <h2>Lead Overview</h2>
           <section className="">
             {/* {leads.slice(0, 5)?.map((lead, index) => ( */}
+             {isLoading && <p>Leads are Loading...</p>}
+             {error && <p style={{ color: "red" }}>{error}</p>}
             {leads?.map((lead, index) => (
               <div key={lead._id} style={{border: '1px'}}>
                 <p>
@@ -136,6 +142,7 @@ const LeadList = () => {
           <section>
             <h2>Filtered Leads by Sales Agents:</h2>
             <div  className="listBox" style={{width: '25rem'}}>
+            {selectFilter && <p><strong>Select below sales agent to see filtered Leads by Sales Agent.</strong></p>}
             {leadsByAgents?.map((agent) => (
               <div key={agent._id}>
                 <p>
@@ -158,6 +165,8 @@ const LeadList = () => {
           <section>
             <h2>Sorted By Priority-</h2>
             <div  className="listBox" style={{width: '50rem'}}>
+            {isLoading && <p> Leads are Loading...</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
             {/* {sortedLeads?.slice(0, 6).map((lead) => ( */}
             {sortedLeads?.map((lead) => (
               <div key={lead._id}>
