@@ -21,22 +21,14 @@ function LeadManagement() {
   const [showFormModel, setShowFormModel] = useState(false);
   const [edit, setEdit] = useState(lead);
 
-  
   console.log(JSON.stringify(edit), "checking edit");
 
   const [editForm, setEditForm] = useState();
-  console.log(editForm, "editform")
-
-  // const [oneLead, setOneLead] = useState();
+  console.log(editForm, "editform");
 
   useEffect(() => {
-  setEdit(lead);
-}, [lead]);
-
-
-// useEffect(() => {
-//   setLead(editForm)
-// }, [editForm])
+    setEdit(lead);
+  }, [lead]);
 
   useEffect(() => {
     async function fetchComments() {
@@ -47,8 +39,6 @@ function LeadManagement() {
         console.log(res.data, "responseData");
         setComment(res.data);
         console.log(comment, "comments");
-
-        // setCommentData(res.data);
       } catch (error) {
         throw error;
       }
@@ -56,41 +46,23 @@ function LeadManagement() {
     fetchComments();
   }, []);
 
-   async function fetchLeads() {
-      try {
-        console.log("Fetching lead...");
-        const res = await axios.get(
-          "https://anvaya-model-references-apis-backen.vercel.app/leads"
-        );
-        console.log("Lead is fetched:", res.data);
-        setLead(res.data);
-      } catch (error) {
-        console.error("Error in fetching lead: ", error);
-        setLead([]);
-      }
+  async function fetchLeads() {
+    try {
+      console.log("Fetching lead...");
+      const res = await axios.get(
+        "https://anvaya-model-references-apis-backen.vercel.app/leads"
+      );
+      console.log("Lead is fetched:", res.data);
+      setLead(res.data);
+    } catch (error) {
+      console.error("Error in fetching lead: ", error);
+      setLead([]);
     }
+  }
 
   useEffect(() => {
-   
     fetchLeads();
   }, []);
-
-  // useEffect(() => {
-  //   async function fetchOneLead() {
-  //     try {
-  //       console.log("Fetching lead...");
-  //       const res = await axios.get(
-  //         "https://anvaya-model-references-apis-backen.vercel.app/leads/68f3057c72ca23fcae85d07b"
-  //       );
-  //       console.log("OneLead is fetched:", res.data);
-  //       setOneLead(res.data);
-  //     } catch (error) {
-  //       console.error("Error in fetching lead: ", error);
-  //       setOneLead([]);
-  //     }
-  //   }
-  //   fetchOneLead();
-  // }, []);
 
   async function handleOnChange(e) {
     const { name, value } = e.target;
@@ -157,38 +129,23 @@ function LeadManagement() {
     try {
       const res = await axios.post(
         `https://anvaya-model-references-apis-backen.vercel.app/leads/${leadID}`,
-        edit[index] //sending specific object
+        edit[index]
       );
       setShowFormModel(false);
       console.log(res, "checking res.");
       console.log("Lead details edited successfully", res.data);
-      // setEdit(prev => prev.map(l => l._id === res.data._id ? res.data : l));
-      // setLead(prev => prev.map(l => l._id === res.data._id ? res.data : l));
       setEditForm(res.data);
-      // setOneLead(res.data);
-     
-      fetchLeads()
-      alert("✅ Lead details edited successfully!");
 
+      fetchLeads();
+      alert("✅ Lead details edited successfully!");
     } catch (error) {
       console.log(error, "error");
     }
   }
 
-
-  // useEffect(() => {
-  //   if(editForm){
-  //   setOneLead(editForm)
-  //   }
-  // }, [editForm]);
-
-
-  
-
   return (
     <main className="leadContainer">
       <h1 className="text">
-        {/* Lead Management: {lead.slice(0, 1)?.map((led) => led.name)} */}
         Lead Management: {lead.slice(0, 1)?.map((led) => led.name)}
       </h1>
       <div className="container">
@@ -225,19 +182,19 @@ function LeadManagement() {
                 </p>
               </>
             ))}
-            </div>
+          </div>
 
-            <br />
+          <br />
 
-            <button onClick={() => setShowFormModel(true)} className="editBtn">
-              Edit Lead Details
-            </button>
-            {/* model for editing. */}
+          <button onClick={() => setShowFormModel(true)} className="editBtn">
+            Edit Lead Details
+          </button>
+          {/* model for editing. */}
 
-            <br />
+          <br />
 
-            <div>
-             {showFormModel &&
+          <div>
+            {showFormModel &&
               edit.slice(0, 1).map((item, index) => (
                 <div key={item._id}>
                   <form
@@ -344,9 +301,7 @@ function LeadManagement() {
                     </div>
                   </form>
                 </div>
-             ))}
-
-              
+              ))}
           </div>
           <br />
           <br />
