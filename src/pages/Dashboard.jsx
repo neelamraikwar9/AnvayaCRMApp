@@ -21,9 +21,9 @@ function Dashboard() {
       const res = await axios.get(AllLeadApi);
       console.log(res.data);
       setLead(res.data);
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
-      setError(err.message)
+      setError(err.message);
       console.log("Error message: ", error.message);
     }
   }
@@ -32,8 +32,6 @@ function Dashboard() {
     fetchAllLeadApi();
   }, []);
 
-
-
   const newStatus =
     "https://anvaya-model-references-apis-backen.vercel.app/leads/status/New";
   const proposalStatus =
@@ -41,7 +39,6 @@ function Dashboard() {
   const qualfydStatus =
     "https://anvaya-model-references-apis-backen.vercel.app/leads/status/Qualified";
 
-  
   async function getNewLeads() {
     try {
       const newLeads = await axios.get(newStatus);
@@ -88,7 +85,7 @@ function Dashboard() {
   // fetchDataByStatus('New');
 
   useEffect(() => {
-    fetchDataByStatus("New"); 
+    fetchDataByStatus("New");
   }, []);
 
   return (
@@ -105,13 +102,12 @@ function Dashboard() {
 
           <div className="mainContentContainer">
             <h2>Leads</h2>
-             {loading && <p>Leads are Loading...</p>}
+            {loading && <p>Leads are Loading...</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
             <div className="leads">
               {lead.slice(0, 4)?.map((led, index) => (
                 <div key={led._id}>
                   <div className="leadBoxes">
-                  
                     <h2 className="text">Lead {index + 1}</h2>
                     <p className="text">Name: {led.name}</p>
                     <p className="text">Source: {led.source}</p>
@@ -129,7 +125,6 @@ function Dashboard() {
             <p>New: {newLead.length}</p>
             <p>Qualified: {qualifiedLead.length}</p>
             <p>Proposal Sent: {proposalLead.length}</p>
-           
 
             <h2>Filtered by Status</h2>
             {loading && <div>Leads are Loading...</div>}
@@ -138,7 +133,9 @@ function Dashboard() {
             <ul className="listBox">
               {data.map((item, index) => (
                 <li key={item._id} className="styleList">
-                  <strong>Lead {index + 1} - </strong>Lead Name: <i>{item.name}</i> &nbsp;&nbsp;&nbsp;Status: <i>{item.status}</i>
+                  <strong>Lead {index + 1} - </strong>Lead Name:{" "}
+                  <i>{item.name}</i> &nbsp;&nbsp;&nbsp;Status:{" "}
+                  <i>{item.status}</i>
                 </li>
               ))}
             </ul>
@@ -160,7 +157,6 @@ function Dashboard() {
                 Proposal Sent
               </button>
               <button
-                
                 onClick={() => fetchDataByStatus("Qualified")}
                 className="filBtnStyl"
               >

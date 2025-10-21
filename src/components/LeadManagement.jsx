@@ -159,7 +159,7 @@ function LeadManagement() {
           </div>
         </div>
 
-        <div className="midContainer" style={{width: '54rem'}} >
+        <div className="midContainer" style={{ width: "54rem" }}>
           <div>
             <h2>Lead Details</h2>
             {lead?.slice(0, 1)?.map((led) => (

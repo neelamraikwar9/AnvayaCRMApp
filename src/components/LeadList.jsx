@@ -108,22 +108,22 @@ const LeadList = () => {
     <main className="leadContainer">
       <h1 className="text">Lead List</h1>
       <div className="container">
-      <div  className="backBtnCont" >
-        <div className="backButn">
-          <Link to="/">
-            <button className="btnback">Back to Dashboard</button>
-          </Link>
-        </div>
+        <div className="backBtnCont">
+          <div className="backButn">
+            <Link to="/">
+              <button className="btnback">Back to Dashboard</button>
+            </Link>
+          </div>
         </div>
 
         <div className="midContainer">
           <h2>Lead Overview</h2>
           <section className="">
             {/* {leads.slice(0, 5)?.map((lead, index) => ( */}
-             {isLoading && <p>Leads are Loading...</p>}
-             {error && <p style={{ color: "red" }}>{error}</p>}
+            {isLoading && <p>Leads are Loading...</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
             {leads?.map((lead, index) => (
-              <div key={lead._id} style={{border: '1px'}}>
+              <div key={lead._id} style={{ border: "1px" }}>
                 <p>
                   <strong>Lead {index + 1} - </strong>
                   Lead Status: &nbsp;
@@ -139,63 +139,68 @@ const LeadList = () => {
             ))}
           </section>
           <br />
-          
 
           <section>
             <h2>Filtered Leads by Sales Agents:</h2>
-            <div  className="listBox" style={{width: '25rem'}}>
-            {selectFilter && <p><strong>Select below sales agent to see filtered Leads by Sales Agent.</strong></p>}
-            {leadsByAgents?.map((agent) => (
-              <div key={agent._id}>
+            <div className="listBox" style={{ width: "25rem" }}>
+              {selectFilter && (
                 <p>
-                  {" "}
-                  Lead Name: &nbsp;
                   <strong>
-                    <i>{agent.name}</i>
-                  </strong>{" "}
-                  - Lead Status:&nbsp;
-                  <strong>
-                    <i>{agent.status}</i>
+                    Select below sales agent to see filtered Leads by Sales
+                    Agent.
                   </strong>
                 </p>
-              </div>
-            ))}
+              )}
+              {leadsByAgents?.map((agent) => (
+                <div key={agent._id}>
+                  <p>
+                    {" "}
+                    Lead Name: &nbsp;
+                    <strong>
+                      <i>{agent.name}</i>
+                    </strong>{" "}
+                    - Lead Status:&nbsp;
+                    <strong>
+                      <i>{agent.status}</i>
+                    </strong>
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
           <br />
 
           <section>
             <h2>Sorted By Priority-</h2>
-            <div  className="listBox" style={{width: '50rem'}}>
-            {isLoading && <p> Leads are Loading...</p>}
-          {error && <p style={{ color: "red" }}>{error}</p>}
-            {/* {sortedLeads?.slice(0, 6).map((lead) => ( */}
-            {sortedLeads?.map((lead) => (
-              <div key={lead._id}>
-                <p>
-                  Lead Name: &nbsp;
-                  <strong>
-                    <i>{lead.name}</i>
-                  </strong>
-                  &nbsp;&nbsp; Priority: &nbsp;
-                  <strong>
-                    <i>{lead.priority}</i>
-                  </strong>
-                  &nbsp;&nbsp; Lead Status: &nbsp;
-                  <strong>
-                    <i> &nbsp;&nbsp;{lead.status}</i>
-                  </strong>
-                  &nbsp;&nbsp; Lead Source: &nbsp;
-                  <strong>
-                    <i>{lead.source}</i>
-                  </strong>
-                </p>
-              </div>
-            ))}
+            <div className="listBox" style={{ width: "50rem" }}>
+              {isLoading && <p> Leads are Loading...</p>}
+              {error && <p style={{ color: "red" }}>{error}</p>}
+              {/* {sortedLeads?.slice(0, 6).map((lead) => ( */}
+              {sortedLeads?.map((lead) => (
+                <div key={lead._id}>
+                  <p>
+                    Lead Name: &nbsp;
+                    <strong>
+                      <i>{lead.name}</i>
+                    </strong>
+                    &nbsp;&nbsp; Priority: &nbsp;
+                    <strong>
+                      <i>{lead.priority}</i>
+                    </strong>
+                    &nbsp;&nbsp; Lead Status: &nbsp;
+                    <strong>
+                      <i> &nbsp;&nbsp;{lead.status}</i>
+                    </strong>
+                    &nbsp;&nbsp; Lead Source: &nbsp;
+                    <strong>
+                      <i>{lead.source}</i>
+                    </strong>
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
           <br />
-
 
           <section>
             <h2>Filter Leads by Sales Agent</h2>
@@ -207,7 +212,6 @@ const LeadList = () => {
                   className="filBtnStyl"
                 >
                   {agent.name}
-                  
                 </button>
               ))}
             </div>
@@ -224,7 +228,7 @@ const LeadList = () => {
                 value="Low to hight"
                 checked={sortByPriority === "Low to hight"}
                 onChange={handleSortByPriority}
-                style={{accentColor: 'green'}}
+                style={{ accentColor: "green" }}
               />
               Priority- Low to hight
             </label>
@@ -237,7 +241,7 @@ const LeadList = () => {
                 value="High to Low"
                 checked={sortByPriority === "High to Low"}
                 onChange={handleSortByPriority}
-                style={{accentColor: 'green'}}
+                style={{ accentColor: "green" }}
               />
               Priority- High to Low
             </label>

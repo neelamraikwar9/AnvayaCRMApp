@@ -31,6 +31,7 @@ button {
   background-color: oklch(90.5% 0.093 164.15);
   cursor: pointer;
   transition: border-color 0.25s;
+  color: rgb(1, 0, 1);
 }
 
 button:hover {

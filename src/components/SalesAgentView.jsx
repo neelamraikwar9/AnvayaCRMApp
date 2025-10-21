@@ -1,42 +1,37 @@
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const SalesAgentView = () => {
-//  const [leads, setLeads] = useState([]);
- const [leadsByAgents, setLeadsByAgents] = useState([]);
- const [isLoading, setIsLoading] = useState(true);
+  //  const [leads, setLeads] = useState([]);
+  const [leadsByAgents, setLeadsByAgents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
- const [filteredLeads, setFilteredLeads] = useState();
- const [filMessage, setFilMessage] = useState(true);
+  const [filteredLeads, setFilteredLeads] = useState();
+  const [filMessage, setFilMessage] = useState(true);
 
+  const [sort, setSort] = useState("");
+  const [sorted, setSorted] = useState([]);
 
- const [sort, setSort] = useState("");
- const [sorted, setSorted] = useState([]);
- 
- 
-
-    useEffect(() => {
+  useEffect(() => {
     async function handleFilterBySalesAgent() {
-      try{
-    const res = await axios.get(
-      "https://anvaya-model-references-apis-backen.vercel.app/leads/agent/68e49fdf24fcc90c8e77b5bd"
-    );
-    console.log(res.data, "checkigres lead by agenId");
-    setLeadsByAgents(res.data);
-    setIsLoading(false);
-  } catch(error){
-    setError(error.message);
-    throw error;
-  }
-  }
-  handleFilterBySalesAgent();
+      try {
+        const res = await axios.get(
+          "https://anvaya-model-references-apis-backen.vercel.app/leads/agent/68e49fdf24fcc90c8e77b5bd"
+        );
+        console.log(res.data, "checkigres lead by agenId");
+        setLeadsByAgents(res.data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.message);
+        throw error;
+      }
+    }
+    handleFilterBySalesAgent();
   }, []);
 
-
-   function handleInputChange(value) {
+  function handleInputChange(value) {
     const filtered = leadsByAgents?.filter((lead) => lead.priority === value);
     setFilMessage(false);
     setFilteredLeads(filtered, "filtered");
@@ -56,18 +51,16 @@ const SalesAgentView = () => {
     });
   });
 
-
   function handleSortChange(e) {
     setSort(e.target.value);
-    setIsLoading(trjd)
+    setIsLoading(trjd);
   }
 
   useEffect(() => {
-   
     function getSortedByTimeToClose() {
       try {
-         const AllLeads = [...leadsByAgents];
-    console.log(AllLeads, "AllLeads");
+        const AllLeads = [...leadsByAgents];
+        console.log(AllLeads, "AllLeads");
 
         if (sort === "Low to high") {
           console.log("in if");
@@ -92,67 +85,78 @@ const SalesAgentView = () => {
     getSortedByTimeToClose();
   }, [sort, leadsByAgents]);
 
-
-    return (
-        <main className="leadContainer">
-        <h1 className="text">Leads by Sales Agent</h1>
-         <div className="container">
-          <div  className="backBtnCont" >
-        <div className="backButn">
-          <Link to="/">
-            <button>Back to Dashboard</button>
-          </Link>
-        </div>
+  return (
+    <main className="leadContainer">
+      <h1 className="text">Leads by Sales Agent</h1>
+      <div className="container">
+        <div className="backBtnCont">
+          <div className="backButn">
+            <Link to="/">
+              <button>Back to Dashboard</button>
+            </Link>
+          </div>
         </div>
 
         <div className="midContainer" style={{ width: "54rem" }}>
-        <h2>Lead List by Agent</h2>
-        <section>
-         <p>Sales Agent: <strong>Alex Zem</strong></p>
-         <div className='listBox' style={{width: '60rem'}}>
-         {isLoading && <p> Leads are Loading...</p>}
-          {error && <p style={{ color: "red" }}></p>}
-        {leadsByAgents?.map((leads) => (
-            <div key={leads._id}>
-                <p>Lead Name: <strong>&nbsp;{leads.name}</strong>&nbsp; &nbsp;&nbsp; Agent Name: <strong>&nbsp;{leads.salesAgent.name} ({leads.salesAgent.email})</strong>&nbsp;&nbsp; Lead Status: &nbsp;<strong>{leads.status} &nbsp;</strong></p>
+          <h2>Lead List by Agent</h2>
+          <section>
+            <p>
+              Sales Agent: <strong>Alex Zem</strong>
+            </p>
+            <div className="listBox" style={{ width: "60rem" }}>
+              {isLoading && <p> Leads are Loading...</p>}
+              {error && <p style={{ color: "red" }}></p>}
+              {leadsByAgents?.map((leads) => (
+                <div key={leads._id}>
+                  <p>
+                    Lead Name: <strong>&nbsp;{leads.name}</strong>&nbsp;
+                    &nbsp;&nbsp; Agent Name:{" "}
+                    <strong>
+                      &nbsp;{leads.salesAgent.name} ({leads.salesAgent.email})
+                    </strong>
+                    &nbsp;&nbsp; Lead Status: &nbsp;
+                    <strong>{leads.status} &nbsp;</strong>
+                  </p>
+                </div>
+              ))}
             </div>
-        ))}
-        </div>
-        </section>
-        <br/>
+          </section>
+          <br />
 
-        <section>
+          <section>
             <h3>Leads Filtered by Priority</h3>
-            <div className="listBox" style={{width: '25rem'}}>
-             {filMessage && <p>Select an option from Filter by Priority to see filter. </p>}
-            {filteredLeads?.map((lead) => (
-              
-              <div key={lead._id}>
-             
-                <p>
-                  Lead Name: <strong>{lead.name}</strong> - Priority :{" "}
-                  <strong>{lead.priority}</strong>
-                </p>
-              </div>
-            ))}
+            <div className="listBox" style={{ width: "25rem" }}>
+              {filMessage && (
+                <p>Select an option from Filter by Priority to see filter. </p>
+              )}
+              {filteredLeads?.map((lead) => (
+                <div key={lead._id}>
+                  <p>
+                    Lead Name: <strong>{lead.name}</strong> - Priority :{" "}
+                    <strong>{lead.priority}</strong>
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
 
           <section>
-          <h3>Sorted by Time to Close</h3>
-          {isLoading && <p> Leads are Loading...</p>}
-          {error && <p style={{ color: "red" }}></p>}
-           <div className="listBox" style={{width: '25rem'}}>
-          {sorted?.map((lead) => (
-            <div key={lead._id}>
-                <p>Lead Name: <strong>{lead.name}</strong> - Time to Close: <strong>{lead.timeToClose}</strong></p>
+            <h3>Sorted by Time to Close</h3>
+            {isLoading && <p> Leads are Loading...</p>}
+            {error && <p style={{ color: "red" }}></p>}
+            <div className="listBox" style={{ width: "25rem" }}>
+              {sorted?.map((lead) => (
+                <div key={lead._id}>
+                  <p>
+                    Lead Name: <strong>{lead.name}</strong> - Time to Close:{" "}
+                    <strong>{lead.timeToClose}</strong>
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-          </div>
           </section>
-          
 
-         <section>
+          <section>
             <h2>Filter by Priority</h2>
             <div style={{ display: "flex", gap: "6rem" }}>
               <label htmlFor="h">
@@ -162,7 +166,7 @@ const SalesAgentView = () => {
                   name="priority"
                   value="High"
                   onChange={(e) => handleInputChange(e.target.value)}
-                  style={{accentColor: 'green'}}
+                  style={{ accentColor: "green" }}
                 />
                 High
               </label>
@@ -173,7 +177,7 @@ const SalesAgentView = () => {
                   name="priority"
                   value="Medium"
                   onChange={(e) => handleInputChange(e.target.value)}
-                  style={{accentColor: 'green'}}
+                  style={{ accentColor: "green" }}
                 />
                 Medium
               </label>
@@ -184,13 +188,12 @@ const SalesAgentView = () => {
                   name="priority"
                   value="Low"
                   onChange={(e) => handleInputChange(e.target.value)}
-                  style={{accentColor: 'green'}}
+                  style={{ accentColor: "green" }}
                 />
                 Low
               </label>
             </div>
           </section>
-
 
           <section>
             <h2>Sort by Time to Close</h2>
@@ -202,7 +205,7 @@ const SalesAgentView = () => {
                 value="Low to high"
                 checked={sort === "Low to high"}
                 onChange={handleSortChange}
-                style={{accentColor: 'green'}}
+                style={{ accentColor: "green" }}
               />
               Time to Close- Low to high
             </label>
@@ -215,19 +218,15 @@ const SalesAgentView = () => {
                 value="High to low"
                 checked={sort === "High to low"}
                 onChange={handleSortChange}
-                style={{accentColor: 'green'}}
+                style={{ accentColor: "green" }}
               />
               Time to Close- High to low
             </label>
           </section>
-
-
         </div>
-        </div>
-
-
-        </main>
-    )
-}
+      </div>
+    </main>
+  );
+};
 
 export default SalesAgentView;

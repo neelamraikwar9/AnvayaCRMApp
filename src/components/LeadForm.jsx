@@ -15,7 +15,7 @@ const LeadForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [salesAgents, setSalesAgents] = useState([]);
- 
+
   //
   const [loadingAgents, setLoadingAgents] = useState(true);
 
@@ -39,7 +39,6 @@ const LeadForm = () => {
     fetchSalesAgents();
   }, []);
 
- 
   const handleChange = (e) => {
     const { name, value } = e.target;
     // console.log(name, value);
@@ -89,21 +88,14 @@ const LeadForm = () => {
       if (error.response) {
         console.error("Server error:", error.response.data);
         console.error("Status:", error.response.status);
-        alert(
-          ` Error: ${
-            error.response.data.message ||
-            "Failed to add lead"
-          }`
-        );
+        alert(` Error: ${error.response.data.message || "Failed to add lead"}`);
       } else if (error.request) {
         console.error("Network error:", error.request);
         alert("Network error: Please check your internet connection.");
-      }
-      else {
+      } else {
         console.error("Error:", error.message);
         alert(` Error: ${error.message}`);
       }
-      
     } finally {
       setIsSubmitting(false);
     }
@@ -193,7 +185,7 @@ const LeadForm = () => {
               name="priority"
               value={formData.priority}
               onChange={handleChange}
-              style={{AccentColor: 'green'}}
+              style={{ AccentColor: "green" }}
             >
               <option value="High">High</option>
               <option value="Medium">Medium</option>
@@ -206,7 +198,7 @@ const LeadForm = () => {
             <input
               type="number"
               name="timeToClose"
-              value={isNaN(formData.timeToClose) ? '' : formData.timeToClose}
+              value={isNaN(formData.timeToClose) ? "" : formData.timeToClose}
               id="time"
               placeholder="Number of Days"
               onChange={handleChange}
@@ -221,7 +213,6 @@ const LeadForm = () => {
               value={formData.tags}
               onChange={handleChange}
             >
-              
               <option value="">Select Tags</option>
               <option value="hot-lead">Hot Lead</option>
               <option value="follow-up">Follow Up</option>

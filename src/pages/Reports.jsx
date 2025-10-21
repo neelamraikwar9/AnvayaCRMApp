@@ -101,18 +101,18 @@ const Report = () => {
     <main className="leadContainer">
       <h1 className="text">Anvaya CRM Reports </h1>
       <div className="container">
-      <div  className="backBtnCont" >
-        <div className="backButn">
-          <Link to="/">
-            <button>Back to Dashboard</button>
-          </Link>
-        </div>
+        <div className="backBtnCont">
+          <div className="backButn">
+            <Link to="/">
+              <button>Back to Dashboard</button>
+            </Link>
+          </div>
         </div>
 
         <div className="midContainer" style={{ width: "54rem" }}>
           <h2>Report Overview</h2>
           <br />
-        
+
           <section>
             <p style={{ fontSize: "20px" }}>
               <strong>Total closed Leads and Leads in Pipeline: </strong>
@@ -144,22 +144,21 @@ const Report = () => {
                     },
                   ],
                 }}
-
-                 options={{
-    plugins: {
-      legend: {
-        labels: {
-          color: "white",            // Legend text color
-          font: {
-            size: 14,                // Legend font size
-            weight: "bold",          // Legend font weight
-            family: "Arial"          // Legend font family
-          },
-          padding: 20                // Padding around legend items
-        }
-      }
-    }
-  }}
+                options={{
+                  plugins: {
+                    legend: {
+                      labels: {
+                        color: "white", // Legend text color
+                        font: {
+                          size: 14, // Legend font size
+                          weight: "bold", // Legend font weight
+                          family: "Arial", // Legend font family
+                        },
+                        padding: 20, // Padding around legend items
+                      },
+                    },
+                  },
+                }}
               />
             </div>
           </section>
@@ -167,9 +166,8 @@ const Report = () => {
           <br />
           <br />
 
-
           <section>
-            <p style={{ fontSize: "20px"}}>
+            <p style={{ fontSize: "20px" }}>
               <strong>Leads Closed by Sales Agent:</strong>
             </p>
             {/* <p>[Bar Chart]</p> */}
@@ -194,29 +192,27 @@ const Report = () => {
                     },
                   ],
                 }}
-
-                 options={{
-    plugins: {
-      legend: {
-        labels: {
-          color: "white",            // Legend text color
-          font: {
-            size: 14,                // Legend font size
-            weight: "bold",          // Legend font weight
-            family: "Arial"          // Legend font family
-          },
-          padding: 20                // Padding around legend items
-        }
-      }
-    }
-  }}
+                options={{
+                  plugins: {
+                    legend: {
+                      labels: {
+                        color: "white", // Legend text color
+                        font: {
+                          size: 14, // Legend font size
+                          weight: "bold", // Legend font weight
+                          family: "Arial", // Legend font family
+                        },
+                        padding: 20, // Padding around legend items
+                      },
+                    },
+                  },
+                }}
               />
             </div>
           </section>
           <br />
           <br />
           <br />
-
 
           <section>
             <p style={{ fontSize: "20px" }}>
@@ -246,22 +242,21 @@ const Report = () => {
                     },
                   ],
                 }}
-
-                 options={{
-    plugins: {
-      legend: {
-        labels: {
-          color: "white",            // Legend text color
-          font: {
-            size: 14,                // Legend font size
-            weight: "bold",          // Legend font weight
-            family: "Arial"          // Legend font family
-          },
-          padding: 20                // Padding around legend items
-        }
-      }
-    }
-  }}
+                options={{
+                  plugins: {
+                    legend: {
+                      labels: {
+                        color: "white", // Legend text color
+                        font: {
+                          size: 14, // Legend font size
+                          weight: "bold", // Legend font weight
+                          family: "Arial", // Legend font family
+                        },
+                        padding: 20, // Padding around legend items
+                      },
+                    },
+                  },
+                }}
               />
             </div>
           </section>

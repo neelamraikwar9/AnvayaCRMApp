@@ -14,34 +14,34 @@ const LeadStatusView = () => {
 
   useEffect(() => {
     async function fetchQualifiedLeads() {
-      try{
-      const qualfydStatus = await axios.get(
-        "https://anvaya-model-references-apis-backen.vercel.app/leads/status/Qualified"
-      );
-      console.log(qualfydStatus.data, "qualfydStatus");
-      setProposal(qualfydStatus.data);
-      setIsLoading(false);
-    } catch(error){
-      setError(error.message);
-      console.log(error)
-    }
+      try {
+        const qualfydStatus = await axios.get(
+          "https://anvaya-model-references-apis-backen.vercel.app/leads/status/Qualified"
+        );
+        console.log(qualfydStatus.data, "qualfydStatus");
+        setProposal(qualfydStatus.data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.message);
+        console.log(error);
+      }
     }
     fetchQualifiedLeads();
   }, []);
 
   useEffect(() => {
     async function fetchLeads() {
-      try{
-      const fetchLeads = await axios.get(
-        "https://anvaya-model-references-apis-backen.vercel.app/leads"
-      );
-      console.log("leads", fetchLeads.data);
-      setLeads(fetchLeads.data);
-      setIsLoading(false);
-    } catch(error){
-      setError(error.message);
-      throw error;
-    }
+      try {
+        const fetchLeads = await axios.get(
+          "https://anvaya-model-references-apis-backen.vercel.app/leads"
+        );
+        console.log("leads", fetchLeads.data);
+        setLeads(fetchLeads.data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.message);
+        throw error;
+      }
     }
     fetchLeads();
   }, []);
@@ -51,7 +51,7 @@ const LeadStatusView = () => {
   function handleInputChange(value) {
     const filtered = leads?.filter((lead) => lead.priority === value);
     setFilteredLeads(filtered, "filtered");
-     setFilMessage(false);
+    setFilMessage(false);
     console.log(filtered, "checking leads");
   }
 
@@ -72,11 +72,10 @@ const LeadStatusView = () => {
   }
 
   useEffect(() => {
-   
     function getSortedByTimeToClose() {
       try {
-         const AllLeads = [...leads];
-    console.log(AllLeads, "AllLeads");
+        const AllLeads = [...leads];
+        console.log(AllLeads, "AllLeads");
 
         if (sort === "Low to high") {
           console.log("in if");
@@ -105,12 +104,12 @@ const LeadStatusView = () => {
     <main className="leadContainer">
       <h1 className="text">Lead by Status</h1>
       <div className="container">
-      <div  className="backBtnCont" >
-        <div className="backButn">
-          <Link to="/">
-            <button>Back to Dashboard</button>
-          </Link>
-        </div>
+        <div className="backBtnCont">
+          <div className="backButn">
+            <Link to="/">
+              <button>Back to Dashboard</button>
+            </Link>
+          </div>
         </div>
 
         <div className="midContainer" style={{ width: "54rem" }}>
@@ -118,8 +117,8 @@ const LeadStatusView = () => {
           <section>
             <h3>Status: Qualified</h3>
             <div style={{}} className="listBox">
-            {isLoading && <p> Leads are Loading...</p>}
-          {error && <p style={{ color: "red" }}>{error}</p>}
+              {isLoading && <p> Leads are Loading...</p>}
+              {error && <p style={{ color: "red" }}>{error}</p>}
               {proposal?.map((prop, index) => (
                 <div key={prop._id} style={{ border: "1px" }}>
                   <p>
@@ -137,37 +136,39 @@ const LeadStatusView = () => {
           <section>
             <h2>Leads Filtered by Priority</h2>
             {isLoading && <p> Leads are Loading...</p>}
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          {/* {filMessage && <p>Select Leads Filter by Priority to see filter.</p>} */}
-            <div className="listBox" style={{width: '25rem', }}>
-          {filMessage && <p>Select Leads Filter by Priority to see filter.</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            {/* {filMessage && <p>Select Leads Filter by Priority to see filter.</p>} */}
+            <div className="listBox" style={{ width: "25rem" }}>
+              {filMessage && (
+                <p>Select Leads Filter by Priority to see filter.</p>
+              )}
 
-            {filteredLeads?.map((lead) => (
-              <div key={lead._id} >
-                <p>
-                  Lead Name: <strong>{lead.name}</strong> - Priority :{" "}
-                  <strong>{lead.priority}</strong>
-                </p>
-              </div>
-            ))}
+              {filteredLeads?.map((lead) => (
+                <div key={lead._id}>
+                  <p>
+                    Lead Name: <strong>{lead.name}</strong> - Priority :{" "}
+                    <strong>{lead.priority}</strong>
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
-          
+
           <section>
-          <h2>Sorted by Time to Close</h2>
-           {isLoading && <p> Leads are Loading...</p>}
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          <div className="listBox" style={{width: '30rem', }}>
-          {sorted?.map((lead) => (
-            <div key={lead._id}>
-                <p>Lead Name: <strong>{lead.name}</strong> - Time to Close: <strong>{lead.timeToClose}</strong>
-</p>
+            <h2>Sorted by Time to Close</h2>
+            {isLoading && <p> Leads are Loading...</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            <div className="listBox" style={{ width: "30rem" }}>
+              {sorted?.map((lead) => (
+                <div key={lead._id}>
+                  <p>
+                    Lead Name: <strong>{lead.name}</strong> - Time to Close:{" "}
+                    <strong>{lead.timeToClose}</strong>
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-          </div>
           </section>
-          
-
 
           <section>
             <h2>Filter by Priority</h2>
@@ -179,7 +180,7 @@ const LeadStatusView = () => {
                   name="priority"
                   value="High"
                   onChange={(e) => handleInputChange(e.target.value)}
-                  style={{accentColor: 'green'}}
+                  style={{ accentColor: "green" }}
                 />
                 High
               </label>
@@ -190,7 +191,7 @@ const LeadStatusView = () => {
                   name="priority"
                   value="Medium"
                   onChange={(e) => handleInputChange(e.target.value)}
-                  style={{accentColor: 'green'}}
+                  style={{ accentColor: "green" }}
                 />
                 Medium
               </label>
@@ -201,7 +202,7 @@ const LeadStatusView = () => {
                   name="priority"
                   value="Low"
                   onChange={(e) => handleInputChange(e.target.value)}
-                  style={{accentColor: 'green'}}
+                  style={{ accentColor: "green" }}
                 />
                 Low
               </label>
@@ -218,7 +219,7 @@ const LeadStatusView = () => {
                 value="Low to high"
                 checked={sort === "Low to high"}
                 onChange={handleSortChange}
-                style={{accentColor: 'green'}}
+                style={{ accentColor: "green" }}
               />
               Time to Close- Low to high
             </label>
@@ -231,7 +232,7 @@ const LeadStatusView = () => {
                 value="High to low"
                 checked={sort === "High to low"}
                 onChange={handleSortChange}
-                style={{accentColor: 'green'}}
+                style={{ accentColor: "green" }}
               />
               Time to Close- High to low
             </label>
