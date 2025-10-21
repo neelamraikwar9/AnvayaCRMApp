@@ -77,10 +77,12 @@ const Setting = () => {
     <main className="leadContainer">
       <h1 className="text">Setting</h1>
       <div className="container">
-        <div className="backButn">
-          <Link to="/">
-            <button className="btnback">Back to Dashboard</button>
-          </Link>
+        <div className="backBtnCont">
+          <div className="backButn">
+            <Link to="/">
+              <button className="btnback">Back to Dashboard</button>
+            </Link>
+          </div>
         </div>
 
         <div className="midContainer">
@@ -130,9 +132,8 @@ const Setting = () => {
             </div>
           ))}
 
-          <br/>
-          <br/>
-
+          <br />
+          <br />
 
           <h2>All Sales Agent:</h2>
           {isLoading && <p>Sales Agent are Loading...</p>}

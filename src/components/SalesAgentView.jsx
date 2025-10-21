@@ -97,10 +97,12 @@ const SalesAgentView = () => {
         <main className="leadContainer">
         <h1 className="text">Leads by Sales Agent</h1>
          <div className="container">
+          <div  className="backBtnCont" >
         <div className="backButn">
           <Link to="/">
             <button>Back to Dashboard</button>
           </Link>
+        </div>
         </div>
 
         <div className="midContainer">

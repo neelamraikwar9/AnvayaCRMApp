@@ -108,10 +108,12 @@ const LeadList = () => {
     <main className="leadContainer">
       <h1 className="text">Lead List</h1>
       <div className="container">
+      <div  className="backBtnCont" >
         <div className="backButn">
           <Link to="/">
             <button className="btnback">Back to Dashboard</button>
           </Link>
+        </div>
         </div>
 
         <div className="midContainer">

@@ -22,7 +22,7 @@ function LeadManagement() {
   const [edit, setEdit] = useState(lead);
   console.log(JSON.stringify(edit), "checking edit");
 
-  const [editForm, setEditForm] = useState();
+  // const [editForm, setEditForm] = useState();
 
   useEffect(() => {
     setEdit(lead);
@@ -152,10 +152,12 @@ function LeadManagement() {
         Lead Management: {lead.slice(0, 1)?.map((led) => led.name)}
       </h1>
       <div className="container">
+      <div  className="backBtnCont" >
         <div className="backButn" >
           <Link to="/">
-            <button>Back to Dashboard</button>
+            <button >Back to Dashboard</button>
           </Link>
+        </div>
         </div>
 
         <div className="midContainer">
@@ -192,9 +194,7 @@ function LeadManagement() {
             {/* model for editing. */}
 
             <br />
-            <br />
-            <br />
-
+          
             {showFormModel &&
               edit.slice(0, 1).map((item, index) => (
                 <div key={item._id}>

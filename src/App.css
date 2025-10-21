@@ -53,15 +53,21 @@ input {
 
 .leadContainer {
     border: 1px solid rgb(126, 16, 228);
+    
     /* width: 100rem; */
     /* margin: 2rem 4rem; */
 }
 
 .container {
-    border: 1px solid blueviolet;
+    border: 1px solid rgb(226, 43, 43);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.backBtnCont {
+    border: 1px solid yellow;
+
 }
 
 .backButn {
