@@ -2,6 +2,8 @@ import "./leadManagement.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function LeadManagement() {
   const [commentData, setCommentData] = useState({
@@ -30,8 +32,8 @@ function LeadManagement() {
     setEdit(lead);
   }, [lead]);
 
-  useEffect(() => {
-    async function fetchComments() {
+
+  async function fetchComments() {
       try {
         const res = await axios.get(
           "https://anvaya-model-references-apis-backen.vercel.app/comments"
@@ -43,6 +45,9 @@ function LeadManagement() {
         throw error;
       }
     }
+
+  useEffect(() => {
+    
     fetchComments();
   }, []);
 
@@ -80,21 +85,30 @@ function LeadManagement() {
 
     setIsSubmitting(true);
 
-    const submitComment = { ...commentData, commentData };
-
+    const submitComment = { ...commentData };
     console.log("submitting to API: ", submitComment);
-
+    
     try {
       const res = await axios.post(
         "https://anvaya-model-references-apis-backen.vercel.app/comments",
         JSON.stringify(submitComment),
         { headers: { "Content-Type": "application/json" } }
+        
       );
 
-      // setCommentData([]);
+        // setCommentData([]);
 
       console.log("Comment added successfully", res.data);
-      alert("✅ Comment added successfully!");
+      toast.success("Comment added successfully.", {
+            autoClose: 3000
+         })
+         setCommentData({
+          lead: "",
+          author: "",
+          commentText: "",
+         });
+
+         fetchComments();
     } catch (error) {
       console.log("Error", error);
     }
@@ -118,6 +132,7 @@ function LeadManagement() {
   }, []);
 
   function onInputChange(e, index) {
+    // console.log(e.index, "ekjfkdljf")
     const { name, value } = e.target;
     console.log(name, value, "nameValue");
     const updatedEdit = [...edit];
@@ -131,13 +146,16 @@ function LeadManagement() {
         `https://anvaya-model-references-apis-backen.vercel.app/leads/${leadID}`,
         edit[index]
       );
-      setShowFormModel(false);
+      
       console.log(res, "checking res.");
       console.log("Lead details edited successfully", res.data);
-      setEditForm(res.data);
+      // setEditForm(res.data);
 
       fetchLeads();
       alert("✅ Lead details edited successfully!");
+      
+
+      setShowFormModel(false);
     } catch (error) {
       console.log(error, "error");
     }
@@ -161,7 +179,7 @@ function LeadManagement() {
           <div>
             <h2>Lead Details</h2>
             {lead.slice(0, 1)?.map((led) => (
-              <>
+              <div key={led.name}>
                 <p>
                   <strong>Lead Name:</strong>&nbsp; {led?.name}
                 </p>
@@ -180,7 +198,7 @@ function LeadManagement() {
                 <p>
                   <strong>Time to Close:</strong> &nbsp;{led?.timeToClose} Days
                 </p>
-              </>
+              </div>
             ))}
           </div>
 
@@ -218,7 +236,7 @@ function LeadManagement() {
                     <label>Sales Agent:</label>
                     <select
                       name="salesAgent"
-                      value={item.salesAgent?._id || ""}
+                      value={item?.salesAgent?._id || ""}
                       onChange={(e) => onInputChange(e, index)}
                       className="inpStyl"
                     >
@@ -311,7 +329,7 @@ function LeadManagement() {
             {comment?.map((comm) => (
               <div key={comm._id} className="commBox">
                 <p>
-                  <strong>{comm.author?.name}</strong> - {comm.createdAt}
+                   {comm.createdAt}
                 </p>
                 <p>Comment: {comm.commentText}</p>
               </div>

@@ -1,6 +1,9 @@
 import "./leadForm.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const LeadForm = () => {
   const [formData, setFormData] = useState({
@@ -71,7 +74,10 @@ const LeadForm = () => {
 
       console.log("Lead added successfully", response.data);
 
-      alert("✅ Lead added successfully!");
+      toast.success("Lead added successfully.", {
+        autoClose: 3000
+      })
+      
 
       setFormData({
         name: "",

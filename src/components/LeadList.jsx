@@ -104,6 +104,15 @@ const LeadList = () => {
     }
   }, [sortByPriority, leads]);
 
+
+  // async function handleLeadOnClick(leadId){
+  //   try{
+  //     const 
+  //   } catch(error){
+  //     throw error;
+  //   }
+  // }
+
   return (
     <main className="leadContainer">
       <h1 className="text">Lead List</h1>
@@ -123,8 +132,10 @@ const LeadList = () => {
             {isLoading && <p>Leads are Loading...</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
             {leads?.map((lead, index) => (
-              <div key={lead._id} style={{ border: "1px" }}>
-                <p>
+              <ul key={lead._id} style={{ border: "1px" }}>
+
+                <li className="styleList">
+                <Link to={`/lead/${lead?._id}`} className="clickDetail">
                   <strong>Lead {index + 1} - </strong>
                   Lead Status: &nbsp;
                   <strong>
@@ -134,8 +145,9 @@ const LeadList = () => {
                   <strong>
                     <i>{lead.salesAgent?.name}</i>
                   </strong>
-                </p>
-              </div>
+                  </Link>
+                </li>
+              </ul>
             ))}
           </section>
           <br />

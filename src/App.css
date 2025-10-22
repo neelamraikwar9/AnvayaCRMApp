@@ -132,3 +132,11 @@ input {
 .inpStyl {
     font-size: 16px;
 }
+
+.clickDetail {
+    color: white;
+}
+
+.clickDetail:hover{
+    color: greenyellow;
+}
