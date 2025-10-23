@@ -116,7 +116,7 @@ const LeadList = () => {
           </div>
         </div>
 
-        <div className="midContainer" style={{border: '1px solid red', width: '51rem'}}>
+        <div className="midContainer" style={{width: '50rem'}}>
           <h2>Lead Overview</h2>
           <section>
             {/* {leads.slice(0, 5)?.map((lead, index) => ( */}
