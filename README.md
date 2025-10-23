@@ -10,7 +10,7 @@ Built with React Frontend, Express/Node backend, MongoDB database, Express and R
  
 ## Demo Link 
 
-[Live Demo](https://anvaya-crm-app-azure.vercel.app) 
+[Live Demo](https://my-book-lovers-shop.vercel.app/books) 
 
 
 ---
@@ -48,7 +48,7 @@ npm run dev
 ## Demo Video
 
 Watch a Walkthrough 
-[Loom Video](paste video link)
+[Loom Video](https://www.loom.com/share/e4bc4296c42948e2b4bdde6e00f87589?sid=5e0991ae-2d88-4f0c-a82f-c5eac57cf714)
 
 
 ---
@@ -117,12 +117,11 @@ Watch a Walkthrough
  ---
 
 
-
  ## API Refrence
 
  ### GET /[api/leads](https://anvaya-model-references-apis-backen.vercel.app/leads)<br/>
 
- List all Leads <br/>  
+ List  of all Leads <br/>  
 
  Sample Response: <br/>
  
@@ -136,7 +135,7 @@ Watch a Walkthrough
 
  ### GET /[api/salesAgent](https://anvaya-model-references-apis-backen.vercel.app/salesAgent)<br/>
 
- List all Sales Agent <br/>  
+ List of all Sales Agent <br/>  
 
  Sample Response: <br/>
  
@@ -163,7 +162,7 @@ Watch a Walkthrough
 
 ### GET /[api/leads/:id](https://anvaya-model-references-apis-backen.vercel.app/leads/68f305f872ca23fcae85d083)<br/>
 
- Get a lead by Id <br/> 
+ Get a Lead by Id <br/> 
 
  Sample Response: <br/>
  
@@ -314,6 +313,7 @@ Watch a Walkthrough
 
 
  ## Contact
+ 
  For bugs or feature request, please reach out to neelam.raikwar.234303@gmail.com
  
  
