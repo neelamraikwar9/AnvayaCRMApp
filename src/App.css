@@ -10,8 +10,9 @@
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    padding: 2rem 5rem;
+    padding: 1rem 3rem;
     border-radius: 1rem;
+    margin: 5rem;
 }
 
 .text {
