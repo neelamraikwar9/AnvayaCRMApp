@@ -116,9 +116,9 @@ const LeadList = () => {
           </div>
         </div>
 
-        <div className="midContainer">
+        <div className="midContainer" style={{border: '1px solid red', width: '51rem'}}>
           <h2>Lead Overview</h2>
-          <section className="">
+          <section>
             {/* {leads.slice(0, 5)?.map((lead, index) => ( */}
             {isLoading && <p>Leads are Loading...</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
