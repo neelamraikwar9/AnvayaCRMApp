@@ -4,7 +4,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const LeadForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -75,9 +74,8 @@ const LeadForm = () => {
       console.log("Lead added successfully", response.data);
 
       toast.success("Lead added successfully.", {
-        autoClose: 3000
-      })
-      
+        autoClose: 3000,
+      });
 
       setFormData({
         name: "",

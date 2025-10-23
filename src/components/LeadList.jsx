@@ -104,15 +104,6 @@ const LeadList = () => {
     }
   }, [sortByPriority, leads]);
 
-
-  // async function handleLeadOnClick(leadId){
-  //   try{
-  //     const 
-  //   } catch(error){
-  //     throw error;
-  //   }
-  // }
-
   return (
     <main className="leadContainer">
       <h1 className="text">Lead List</h1>
@@ -133,18 +124,17 @@ const LeadList = () => {
             {error && <p style={{ color: "red" }}>{error}</p>}
             {leads?.map((lead, index) => (
               <ul key={lead._id} style={{ border: "1px" }}>
-
                 <li className="styleList">
-                <Link to={`/lead/${lead?._id}`} className="clickDetail">
-                  <strong>Lead {index + 1} - </strong>
-                  Lead Status: &nbsp;
-                  <strong>
-                    <i>{lead.status}</i>
-                  </strong>{" "}
-                  &nbsp;&nbsp;&nbsp; Sales Agend:{" "}
-                  <strong>
-                    <i>{lead.salesAgent?.name}</i>
-                  </strong>
+                  <Link to={`/lead/${lead?._id}`} className="clickDetail">
+                    <strong>Lead {index + 1} - </strong>
+                    Lead Status: &nbsp;
+                    <strong>
+                      <i>{lead.status}</i>
+                    </strong>{" "}
+                    &nbsp;&nbsp;&nbsp; Sales Agend:{" "}
+                    <strong>
+                      <i>{lead.salesAgent?.name}</i>
+                    </strong>
                   </Link>
                 </li>
               </ul>
@@ -230,7 +220,6 @@ const LeadList = () => {
           </section>
 
           <section>
-            {/* <p>Sort by: [Priority] [Time to Close]</p> */}
             <h2>Sort by Priority</h2>
             <label htmlFor="hi">
               <input

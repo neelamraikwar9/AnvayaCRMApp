@@ -11,7 +11,7 @@ import Report from "./pages/Reports";
 import LeadStatusView from "./components/LeadStatusView";
 import SalesAgentView from "./components/SalesAgentView";
 import Setting from "./pages/Setting";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   return (
@@ -35,7 +35,6 @@ function App() {
         <Route path="/setting" element={<Setting />}></Route>
       </Routes>
       <ToastContainer autoClose={3000} />
-      
     </>
   );
 }

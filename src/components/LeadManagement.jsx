@@ -25,29 +25,24 @@ function LeadManagement() {
 
   console.log(JSON.stringify(edit), "checking edit");
 
-  const [editForm, setEditForm] = useState();
-  console.log(editForm, "editform");
-
   useEffect(() => {
     setEdit(lead);
   }, [lead]);
 
-
   async function fetchComments() {
-      try {
-        const res = await axios.get(
-          "https://anvaya-model-references-apis-backen.vercel.app/comments"
-        );
-        console.log(res.data, "responseData");
-        setComment(res.data);
-        console.log(comment, "comments");
-      } catch (error) {
-        throw error;
-      }
+    try {
+      const res = await axios.get(
+        "https://anvaya-model-references-apis-backen.vercel.app/comments"
+      );
+      console.log(res.data, "responseData");
+      setComment(res.data);
+      console.log(comment, "comments");
+    } catch (error) {
+      throw error;
     }
+  }
 
   useEffect(() => {
-    
     fetchComments();
   }, []);
 
@@ -87,28 +82,25 @@ function LeadManagement() {
 
     const submitComment = { ...commentData };
     console.log("submitting to API: ", submitComment);
-    
+
     try {
       const res = await axios.post(
         "https://anvaya-model-references-apis-backen.vercel.app/comments",
         JSON.stringify(submitComment),
         { headers: { "Content-Type": "application/json" } }
-        
       );
-
-        // setCommentData([]);
 
       console.log("Comment added successfully", res.data);
       toast.success("Comment added successfully.", {
-            autoClose: 3000
-         })
-         setCommentData({
-          lead: "",
-          author: "",
-          commentText: "",
-         });
+        autoClose: 3000,
+      });
+      setCommentData({
+        lead: "",
+        author: "",
+        commentText: "",
+      });
 
-         fetchComments();
+      fetchComments();
     } catch (error) {
       console.log("Error", error);
     }
@@ -146,14 +138,15 @@ function LeadManagement() {
         `https://anvaya-model-references-apis-backen.vercel.app/leads/${leadID}`,
         edit[index]
       );
-      
+
       console.log(res, "checking res.");
       console.log("Lead details edited successfully", res.data);
-      // setEditForm(res.data);
 
       fetchLeads();
-      alert("✅ Lead details edited successfully!");
-      
+
+      toast.success("Lead details edited successfully!", {
+        autoClose: 3000,
+      });
 
       setShowFormModel(false);
     } catch (error) {
@@ -328,9 +321,7 @@ function LeadManagement() {
           <div className="commContainer">
             {comment?.map((comm) => (
               <div key={comm._id} className="commBox">
-                <p>
-                   {comm.createdAt}
-                </p>
+                <p>{comm.createdAt}</p>
                 <p>Comment: {comm.commentText}</p>
               </div>
             ))}

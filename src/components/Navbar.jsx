@@ -1,13 +1,6 @@
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
-  //    const navStyle = {
-  //        display: 'flex',
-  //        width: '100%',
-  //        height: '3rem',
-  //     //    backgroundColor: 'green'
-  // }
-
   return (
     <>
       <nav>

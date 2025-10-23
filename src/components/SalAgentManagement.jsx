@@ -22,7 +22,7 @@ const SalesAgentManagement = () => {
     }
   }
 
-  //we are running this useEffect for one time only.
+  //running this useEffect for one time only.
   useEffect(() => {
     getAgentApi();
   }, []);

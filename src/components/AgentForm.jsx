@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AgentForm = () => {
   const [form, setForm] = useState({
@@ -24,9 +26,14 @@ const AgentForm = () => {
 
       console.log("Sales Agent added successfully", res.data);
 
-      alert("✅ Sales Agent added successfully!");
+      toast.success("Sales Agent added successfully!", {
+        autoClose: 3000,
+      });
 
-      window.location.reload();
+      setForm({
+        name: "",
+        email: "",
+      });
     } catch (error) {
       console.log("Error submitting lead:", error);
     }
@@ -39,12 +46,24 @@ const AgentForm = () => {
           <h1 className="text">Add New Sales Agent</h1>
           <div className="formBox">
             <label htmlFor="nam">Agent Name: </label>
-            <input type="text" id="nam" name="name" onChange={handleChange} />
+            <input
+              type="text"
+              id="nam"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+            />
           </div>
 
           <div className="formBox">
             <label htmlFor="em">Email Address:</label>
-            <input type="email" id="em" name="email" onChange={handleChange} />
+            <input
+              type="email"
+              id="em"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+            />
           </div>
 
           <div className="formButton">

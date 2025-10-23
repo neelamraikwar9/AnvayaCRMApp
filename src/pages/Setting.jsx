@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
 
 const Setting = () => {
@@ -10,7 +12,7 @@ const Setting = () => {
   console.log(leads, "leads");
 
   useEffect(() => {
-    async function getAllLeadApi() {
+    async function fetchAllLeads() {
       try {
         const res = await axios.get(
           "https://anvaya-model-references-apis-backen.vercel.app/leads"
@@ -32,7 +34,7 @@ const Setting = () => {
       }
     }
 
-    getAllLeadApi();
+    fetchAllLeads();
   }, []);
 
   async function handleLeadDelete(e) {
@@ -47,10 +49,14 @@ const Setting = () => {
 
       setLeads((prevLeads) => prevLeads.filter((lead) => lead._id !== leadId));
 
-      alert("✅ Lead deleted successfully!");
+      toast.success("Lead deleted successfully!", {
+        autoClose: 3000,
+      });
     } catch (error) {
       console.error("Failed to delete lead:", error);
-      alert("Failed to delete lead. Please try again.");
+      toast.danger("Failed to delete lead. Please try again.", {
+        autoClose: 3000,
+      });
     }
   }
 
@@ -66,10 +72,14 @@ const Setting = () => {
         presale.filter((agent) => agent._id !== agentId)
       );
 
-      alert("✅ Sales Agent deleted successfully!");
+      toast.success("Sales Agent deleted successfully!", {
+        autoClose: 3000,
+      });
     } catch (error) {
       console.error("Failed to delete Sales Agent:", error);
-      alert("Failed to delete Sales Agent. Please try again.");
+      toast.success("Failed to delete Sales Agent. Please try again.", {
+        autoClose: 3000,
+      });
     }
   }
 
