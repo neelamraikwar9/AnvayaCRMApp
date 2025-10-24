@@ -127,7 +127,7 @@ Watch a Walkthrough
  
  ```
 
-[{ _id, name, source, salesAgent, status, tags}, ....] 
+[{ _id, name, source, salesAgent, status, tags}, ...] 
 
 
  ```
