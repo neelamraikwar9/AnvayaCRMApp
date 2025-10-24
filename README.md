@@ -40,6 +40,7 @@ npm run dev
 - MongoDB
 - axios
 - react-toastify
+- Chart.js
 
 
 --- 
